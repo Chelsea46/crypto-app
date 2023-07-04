@@ -2,21 +2,27 @@
 export const themes = {
     dark: {
         body: {
-            background: "#1f2128",
+            background: "#191B1F",
             color: "#ffffff",
         },
-        navbar:{
-            background: "red",
+        active_coin_portfolio:{
+            background: "#2C2F36"
+        },
+        container:{
+            background: "#1F2128"
         }
     },
     light:{
         body:{
-            background: "#f7f7f7",
+            background: "#FFFFFF",
             color: "#191b1f",
         },
-        navbar:{
-            background: 'orange',
-        }
+        active_coin_portfolio:{
+            background: "#EDEFF2",
+        },
+        container:{
+            background: "#F7F7F7"
+        },
     },
 
 }

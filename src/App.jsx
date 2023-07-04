@@ -8,6 +8,7 @@ import { themes } from "./assets/styles/colors";
 import { GlobalStyles } from './assets/components/styled/Global';
 import Navbar from './assets/components/Navbar';
 import {Container} from './assets/components/styled/Container.styled';
+import {Overview} from './assets/components/styled/Overview.styled'
 
 
 
@@ -23,9 +24,9 @@ function App() {
         <GlobalStyles theme={getCurrentTheme()} />
         <Navbar onClick={toggleTheme} theme={getCurrentTheme()} />
         <Routes>
-          <Route path='/' element={Coins}/>
-          <Route path='/porfolio' element={Portfolio}/>
-          <Route path='/coin/:id' element={Coin}/>
+          <Route path='/' element={ < Coins /> }/>
+          <Route path='/portfolio' element={ < Portfolio /> }/>
+          <Route path='/coin/:id' element={ < Coin /> }/>
         </Routes>
       </Container>
     </ThemeProvider>

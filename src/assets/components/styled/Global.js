@@ -3,7 +3,7 @@ import { createGlobalStyle } from "styled-components";
 export const GlobalStyles = createGlobalStyle`
 
     * {
-        font-family: Poppins;
+        font-family: Poppins, sans-serif;
     }
     body {
         background: ${(props) => props.theme.body.background};
@@ -16,4 +16,5 @@ export const GlobalStyles = createGlobalStyle`
         text-decoration: none;
         color: ${(props) => props.theme.body.color}
     }
+
 `

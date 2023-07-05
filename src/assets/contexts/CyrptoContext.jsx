@@ -19,11 +19,12 @@ function CryptoContextProvider(props) {
     }, [])
 
     // api call for the chart
-    // useEffect(() => {
-    //     axios.get('https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=180&interval=daily')
-    //     .then(response => setCoinChart(response.data))
-    // }, [])
+    useEffect(() => {
+        axios.get('https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=7&interval=daily')
+        .then(response => setCoinChart(response.data))
+    }, [])
 
+    
 
     // values to pass to components
     const value = { coinTable, coinChart };

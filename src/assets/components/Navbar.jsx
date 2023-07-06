@@ -1,5 +1,5 @@
 import { StyledNav } from "./styled/Navbar.styled";
-import { FaCircleHalfStroke, FaSearchengin } from  "react-icons/fa6";
+import { FaCircleHalfStroke } from  "react-icons/fa6";
 import { Link } from "react-router-dom";
 
 

@@ -11,6 +11,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <CryptoContextProvider>
           <App />
       </CryptoContextProvider>
-    </React.StrictMode>,
+    </React.StrictMode>
   </BrowserRouter>
 )

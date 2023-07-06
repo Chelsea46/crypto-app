@@ -8,7 +8,15 @@ export const StyledCoinTable = styled.div`
     .coin-table .table-row {
         padding: 8px; 
       }
- 
+      
+      .green{
+        color: green;
+      }
+
+      .red{
+        color: red;
+      }
+      
     .coin-table {
         width: 30%;
         border-collapse: collapse;
@@ -43,5 +51,17 @@ export const StyledCoinTable = styled.div`
     h1 {
         font-size: 24px;
         margin-bottom: 16px;
+    }
+
+    .progress-label{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: 0;
+    }
+
+    .bullet{
+        display: inline-block;
+        padding-right: 5px;
     }
 `

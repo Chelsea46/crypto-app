@@ -1,9 +1,13 @@
 import { useContext } from 'react';
 import { CryptoContext } from '../contexts/CyrptoContext';
 import { StyledCoinTable } from "../components/styled/CoinTable.styled";
+import { FaCaretDown, FaCaretUp } from  "react-icons/fa6";
+import ProgressBar from './ProgressBar';
+import ChartLine from '../components/ChartLine'
+
 
 export default function CoinTable() {
-  const { coinTable } = useContext(CryptoContext);
+  const { coinTable, formatNumber } = useContext(CryptoContext);
 
   return (
     <StyledCoinTable>
@@ -32,19 +36,60 @@ export default function CoinTable() {
                             </div>
                         </td>
                         <td>{coin.current_price}</td>
-                        <td>{parseFloat(coin.price_change_percentage_1h_in_currency).toFixed(2)}%</td>
-                        <td>{parseFloat(coin.price_change_percentage_24h_in_currency).toFixed(2)}%</td>
-                        <td>{parseFloat(coin.price_change_percentage_7d_in_currency).toFixed(2)}%</td>
-                        <td>{coin.total_volume}</td>
+                        <td className={coin.price_change_percentage_1h_in_currency >= 0 ? 'green' : 'red'} >{coin.price_change_percentage_1h_in_currency >= 0 ?
+                            (<FaCaretUp />) : (<FaCaretDown /> )} 
+                            <span>{Math.abs(coin.price_change_percentage_1h_in_currency).toFixed(2)}%</span>
+                        </td>
+                        <td className={coin.price_change_percentage_24h_in_currency >= 0 ? 'green' : 'red'} >{coin.price_change_percentage_24h_in_currency >= 0 ?
+                            (<FaCaretUp />) : (<FaCaretDown /> )} 
+                            <span>{Math.abs(coin.price_change_percentage_24h_in_currency).toFixed(2)}%</span>
+                        </td>
+                        <td className={coin.price_change_percentage_7d_in_currency >= 0 ? 'green' : 'red'}>{coin.price_change_percentage_7d_in_currency >= 0 ?
+                            (<FaCaretUp />) : (<FaCaretDown /> )} 
+                            <span>{Math.abs(coin.price_change_percentage_7d_in_currency).toFixed(2)}%</span>
+                        </td>
+                        < ProgressBar formatNumber={formatNumber} progVal1={coin.total_volume} progVal2={coin.market_cap} />
+                        < ProgressBar formatNumber={formatNumber} progVal1={coin.circulating_supply} progVal2={coin.total_supply}/>
+                        {/* <td>
+                            <div className="progress-container">
+                                <div className="progress-label">
+                                    <span className="bullet">•</span>
+                                    <span>{formatNumber(coin.total_volume)}</span>
+                                    <span className="bullet">•</span>
+                                    <span>{formatNumber(coin.market_cap)}</span>
+                                </div>
+                                <progress
+                                value={coin.total_volume}
+                                max={coin.market_cap}
+                                >
+                                {((coin.total_volume / coin.market_cap) * 100).toFixed(2)}%
+                                </progress>
+                            </div>
+                            </td> */}
+
+                            {/* <td>
+                            <div className="progress-container">
+                                <div className="progress-label">
+                                    <span className="bullet">•</span>
+                                    <span>{formatNumber(coin.circulating_supply)}</span>
+                                    <span className="bullet">•</span>
+                                    <span>{formatNumber(coin.total_supply)}</span>
+                                </div>
+                                <progress
+                                value={coin.circulating_supply}
+                                max={coin.total_supply}
+                                >
+                                {((coin.circulating_supply / coin.total_supply) * 100).toFixed(2)}%
+                                </progress>
+                            </div>
+                        </td> */}
                         <td>
-                        {coin.circulating_supply} / {coin.total_supply}
-                         </td>
-                        <td>{coin.market_cap_change_percentage_7d_in_currency}</td>
+                            <ChartLine sevenDayData={coin.sparkline_in_7d} last7d={coin.price_change_percentage_7d_in_currency} />
+                        </td>
                     </tr>
                 ))}
             </tbody>
         </table>
- 
     </StyledCoinTable>
   );
 }

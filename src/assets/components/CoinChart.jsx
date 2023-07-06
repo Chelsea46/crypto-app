@@ -1,6 +1,7 @@
 import { useContext, useEffect } from 'react';
 import moment from 'moment';
 import { CryptoContext } from '../contexts/CyrptoContext';
+import { StyledCoinChart } from './styled/CoinChart.styled';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -31,7 +32,7 @@ export default function CoinChart(){
 
     const generateChartLabels = () => {
         const labels = [];
-        for (let i = 6; i >= 0; i--) {
+        for (let i = 29; i >= 0; i--) {
           const date = moment().subtract(i, 'days');
           labels.push(date.format('DD'));
         }
@@ -49,10 +50,34 @@ export default function CoinChart(){
     const todayText = new Date().toString().split(" ").splice(1, 3).join(" ");
 
     const options = {
+        scales: {
+            x: {
+              display: false,
+              grid: {
+                display: false,
+              }
+            },
+            y: {
+                display: false,
+              grid: {
+                display: false,
+              },
+              ticks: {
+                display: false
+              },
+            }
+          },
         responsive: true,
+        decimation: {
+            enabled: true,
+            algorithm: "min-max",
+          },
         plugins: {
+            legend: {
+                display:false,
+              },
           title: {
-            display: true,
+            display:false,
             text: 'Price',
           },
         },
@@ -79,7 +104,7 @@ export default function CoinChart(){
       ],
     };
 
-    return <Line options={options} data={data} />;
-
-        
+    return <StyledCoinChart>
+                <Line options={options} data={data} /> 
+           </StyledCoinChart>;
 }

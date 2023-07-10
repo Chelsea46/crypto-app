@@ -26,9 +26,14 @@ export const StyledCoinTable = styled.div`
         font-size: .75rem;
     }
     
+    thead > tr > th{
+        padding-block: 6px;
+    }
+
     .coin-table th,
     .coin-table td {
-        padding: 2.5em;
+        padding-left: 1.5em;
+        padding-right: 1.5em;
         text-align: left;
         border-bottom: 1px solid #707070;
     }

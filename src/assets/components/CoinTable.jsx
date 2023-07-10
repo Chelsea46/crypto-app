@@ -50,39 +50,6 @@ export default function CoinTable() {
                         </td>
                         < ProgressBar formatNumber={formatNumber} progVal1={coin.total_volume} progVal2={coin.market_cap} />
                         < ProgressBar formatNumber={formatNumber} progVal1={coin.circulating_supply} progVal2={coin.total_supply}/>
-                        {/* <td>
-                            <div className="progress-container">
-                                <div className="progress-label">
-                                    <span className="bullet">•</span>
-                                    <span>{formatNumber(coin.total_volume)}</span>
-                                    <span className="bullet">•</span>
-                                    <span>{formatNumber(coin.market_cap)}</span>
-                                </div>
-                                <progress
-                                value={coin.total_volume}
-                                max={coin.market_cap}
-                                >
-                                {((coin.total_volume / coin.market_cap) * 100).toFixed(2)}%
-                                </progress>
-                            </div>
-                            </td> */}
-
-                            {/* <td>
-                            <div className="progress-container">
-                                <div className="progress-label">
-                                    <span className="bullet">•</span>
-                                    <span>{formatNumber(coin.circulating_supply)}</span>
-                                    <span className="bullet">•</span>
-                                    <span>{formatNumber(coin.total_supply)}</span>
-                                </div>
-                                <progress
-                                value={coin.circulating_supply}
-                                max={coin.total_supply}
-                                >
-                                {((coin.circulating_supply / coin.total_supply) * 100).toFixed(2)}%
-                                </progress>
-                            </div>
-                        </td> */}
                         <td>
                             <ChartLine sevenDayData={coin.sparkline_in_7d} last7d={coin.price_change_percentage_7d_in_currency} />
                         </td>

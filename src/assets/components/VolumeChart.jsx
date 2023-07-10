@@ -25,7 +25,7 @@ import {
     export default function VolumeChart(){
 
         const { coinChart } = useContext(CryptoContext); 
-        console.log(coinChart)
+
         const generateChartLabels = () => {
             const labels = [];
             for (let i = 29; i >= 0; i--) {
@@ -39,7 +39,7 @@ import {
             if (!coinChart || !coinChart.total_volumes) {
               return [];
             }
-            return coinChart.total_volumes.map((vol) => vol[0]);
+            return coinChart.total_volumes.map((vol) => vol[1]);
           };
         
         const options = {

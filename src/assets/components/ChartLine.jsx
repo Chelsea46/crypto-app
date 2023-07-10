@@ -24,10 +24,10 @@ import {
   );
 export default function Chartline({ sevenDayData, last7d }) {
     
-    const prices = sevenDayData && sevenDayData.price.map((el) => el)
-    const labels = [...Array(sevenDayData.price.length).keys()];
+    const prices = sevenDayData?.price;
+    const labels = [...Array(30).keys()];
     const lineColor = last7d && last7d >= 0 ? '#00FF5F' : '#FE1040';
-
+    
     const options = {
         scales: {
             x: {
@@ -72,15 +72,17 @@ export default function Chartline({ sevenDayData, last7d }) {
           data: prices,
           fill: false,
           pointRadius: 0,
-          lineTension: 0,
+          lineTension: .5,
           label: 'BTC',
           borderColor: lineColor,
-          borderWidth: 2
+          borderWidth: 3
         },
       ],
     };
+
+ 
     
       return <StyledChartLine>
-                <Line options={options} data={data} />
+                <Line options={options} data={data}/>
             </StyledChartLine>
 }

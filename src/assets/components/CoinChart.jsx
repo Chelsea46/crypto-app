@@ -38,12 +38,14 @@ export default function CoinChart(){
         }
         return labels;
       };
+    
+      
 
       const generatePrices = () => {
         if (!coinChart || !coinChart.prices) {
           return [];
         }
-        return coinChart.prices.map((price) => price[0]);
+        return coinChart.prices.map((price) => price[1]);
       };
 
       

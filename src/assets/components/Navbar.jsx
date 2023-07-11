@@ -1,9 +1,13 @@
 import { StyledNav } from "./styled/Navbar.styled";
 import { FaCircleHalfStroke } from  "react-icons/fa6";
+import { CryptoContext } from '../contexts/CyrptoContext';
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 
 
 export default function Navbar({onClick, theme}){
+    const { currency, currencySelected } = useContext(CryptoContext);
+    
     return(
         <StyledNav theme={theme}>
             <div className="left-nav">
@@ -15,11 +19,14 @@ export default function Navbar({onClick, theme}){
                         {/* <FaSearchengin className="search-icon"/> */}
                         <input type="text" name="" id="" placeholder = "Search..." className="search-bar"/>
                     </form>
-                <select name="" id="" className="nav-dropdown">
-                    <option value="">BTC</option>
-                    <option value="">USD</option>
-                    <option value="">GBP</option>
-                    <option value="">EUR</option>
+                    <select name="" id="" className="nav-dropdown">
+                    {currency.map((val) => {
+                       return(
+                        <>
+                            <option value={val} onMouseUp={currencySelected}>{val.toUpperCase()}</option>
+                        </>
+                         )
+                    })};
                 </select>
                 <div className="toggle-mode" onClick={onClick}><FaCircleHalfStroke className="toggle"/></div>
             </div>

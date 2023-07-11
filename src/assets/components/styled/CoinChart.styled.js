@@ -5,4 +5,9 @@ export const StyledCoinChart = styled.div`
     background-color: ${(props) => props.theme.body.background};
     border-radius: 10px;
     height: 100%;
+
+    .chart-text{
+        left: 12px;
+        position: relative;
+    }
 `

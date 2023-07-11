@@ -79,8 +79,7 @@ export default function CoinChart(){
                 display:false,
               },
           title: {
-            display:false,
-            text: 'Price',
+            display: false,
           },
         },
       };
@@ -107,6 +106,11 @@ export default function CoinChart(){
     };
 
     return <StyledCoinChart>
+                <div className="chart-text">
+                      <p><strong> Price </strong></p>
+                      <p><strong> {todayText} </strong></p>
+                </div>
+                
                 <Line options={options} data={data} /> 
            </StyledCoinChart>;
 }

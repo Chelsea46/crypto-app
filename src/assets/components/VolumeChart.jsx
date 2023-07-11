@@ -26,6 +26,8 @@ import {
 
         const { coinChart } = useContext(CryptoContext); 
 
+        const todayText = new Date().toString().split(" ").splice(1, 3).join(" ");
+
         const generateChartLabels = () => {
             const labels = [];
             for (let i = 29; i >= 0; i--) {
@@ -71,7 +73,6 @@ import {
               },
             title: {
               display: false,
-              text: 'Chart.js Bar Chart',
             },
           },
         };
@@ -88,6 +89,10 @@ import {
         };
         
           return <StyledVolumeChart>
+                    <div className="barchart-text">
+                      <p><strong> Volume </strong></p>
+                      <p><strong> {todayText} </strong></p>
+                    </div>
                     <Bar options={options} data={data} />
                 </StyledVolumeChart>;
   }

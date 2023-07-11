@@ -25,7 +25,7 @@ import {
 export default function Chartline({ sevenDayData, last7d }) {
     
     const prices = sevenDayData?.price;
-    const labels = [...Array(30).keys()];
+    const labels = [...Array(31).keys()];
     const lineColor = last7d && last7d >= 0 ? '#00FF5F' : '#FE1040';
     
     const options = {
@@ -80,9 +80,10 @@ export default function Chartline({ sevenDayData, last7d }) {
       ],
     };
 
- 
+    const width = 120;
+    const height = 60;
     
       return <StyledChartLine>
-                <Line options={options} data={data}/>
+                <Line options={options} data={data} width={width} height={height}/>
             </StyledChartLine>
 }

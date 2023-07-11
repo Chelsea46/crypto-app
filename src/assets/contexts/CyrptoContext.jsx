@@ -24,6 +24,14 @@ function CryptoContextProvider(props) {
         .then(response => setCoinChart(response.data))
     }, [])
 
+     // currency
+     const currency = ['btc', 'usd', 'gbp', 'eur'];
+
+    //  function for currency selection
+    function currencySelected(){
+      console.log('hello');
+    }
+
     // format Number
     function formatNumber(number) {
         if (number === null) {
@@ -40,7 +48,7 @@ function CryptoContextProvider(props) {
         }
     
     // values to pass to components
-    const value = { coinTable, coinChart, formatNumber };
+    const value = { coinTable, coinChart, formatNumber, currency, currencySelected };
 
     return (
         <CryptoContext.Provider value={value}>

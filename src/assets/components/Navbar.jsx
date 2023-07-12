@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 
 export default function Navbar({onClick, theme}){
-    const { currency, currencySelected } = useContext(CryptoContext);
+    const { currencies, currencySelected } = useContext(CryptoContext);
     
     return(
         <StyledNav theme={theme}>
@@ -20,7 +20,7 @@ export default function Navbar({onClick, theme}){
                         <input type="text" name="" id="" placeholder = "Search..." className="search-bar"/>
                     </form>
                     <select name="" id="" className="nav-dropdown">
-                    {currency.map((val) => {
+                    {currencies.map((val) => {
                        return(
                         <>
                             <option value={val} onMouseUp={currencySelected}>{val.toUpperCase()}</option>

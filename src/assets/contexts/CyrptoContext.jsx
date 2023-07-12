@@ -7,30 +7,33 @@ export const CryptoContext = createContext();
 
 function CryptoContextProvider(props) {
 
-    // table api state
-    const [coinTable, setCoinTable] = useState([])
+    // table api state on render
+    const [coinTable, setCoinTable] = useState([]);
     // chart api state
-    const [coinChart, setCoinChart] = useState([])
+    const [coinChart, setCoinChart] = useState([]);
+    // currency selecting state
+    const [currencyApi, setCurrencyApi] = useState('');
 
-    // api call for table
+    // api call for table on render
     useEffect(() => {
         axios.get(import.meta.env.VITE_TABLE_CHART_API)
         .then(response => setCoinTable(response.data))
-    }, [])
+    }, []);
 
     // api call for the chart
     useEffect(() => {
-        axios.get('https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=30&interval=daily')
+        axios.get(`https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=${currencyApi}&days=30&interval=daily`)
         .then(response => setCoinChart(response.data))
-    }, [])
+    }, [currencyApi]);
 
      // currency
-     const currency = ['btc', 'usd', 'gbp', 'eur'];
+     const currencies = ['btc', 'usd', 'gbp', 'eur'];
 
     //  function for currency selection
-    function currencySelected(){
-      console.log('hello');
+    function currencySelected(e){
+      setCurrencyApi(e.target.value);
     }
+    console.log(currencyApi)
 
     // format Number
     function formatNumber(number) {
@@ -48,7 +51,7 @@ function CryptoContextProvider(props) {
         }
     
     // values to pass to components
-    const value = { coinTable, coinChart, formatNumber, currency, currencySelected };
+    const value = { coinTable, coinChart, formatNumber, currencies, currencySelected };
 
     return (
         <CryptoContext.Provider value={value}>

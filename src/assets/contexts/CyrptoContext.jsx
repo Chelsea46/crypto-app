@@ -13,12 +13,47 @@ function CryptoContextProvider(props) {
     const [coinChart, setCoinChart] = useState([]);
     // currency selecting state
     const [currencyApi, setCurrencyApi] = useState('');
+    // user country state
+    const [country, setCountry] = useState('');
 
-    // api call for table on render
+    // lat and long
     useEffect(() => {
-        axios.get(import.meta.env.VITE_TABLE_CHART_API)
-        .then(response => setCoinTable(response.data))
+        const successCallback = async (position) => {
+          const latitude = position.coords.latitude;
+          const longitude = position.coords.longitude;
+          const response = await axios.get(`https://geocode.maps.co/reverse?lat=${latitude}&lon=${longitude}`)
+          setCountry(response.data.address.country_code)
+        };
+        
+        const errorCallback = (error) => {
+          console.log(error);
+        };
+        
+        navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
     }, []);
+
+    // switch case for countries currency
+    useEffect(() => {
+      const euroCountries = ['es', 'de', 'pt', 'fr', 'ie', 'it', 'gr'];
+  
+      switch(country){
+        case 'gb': setCurrencyApi('gbp');
+        break;
+        case 'usd': setCurrencyApi('usd');
+        break;
+        case country.includes(euroCountries): setCurrencyApi('eur');
+        break;
+        default: setCurrencyApi('btc')
+        break;
+      }
+    }, [country])
+
+    // api call for table
+    useEffect(() => {
+        axios.get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currencyApi}&order=market_cap_desc&per_page=50&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d`)
+        .then(response => setCoinTable(response.data))
+    }, [country])
+
 
     // api call for the chart
     useEffect(() => {
@@ -33,7 +68,6 @@ function CryptoContextProvider(props) {
     function currencySelected(e){
       setCurrencyApi(e.target.value);
     }
-    console.log(currencyApi)
 
     // format Number
     function formatNumber(number) {
@@ -49,9 +83,10 @@ function CryptoContextProvider(props) {
             return number.toFixed(2);
           }
         }
+
     
     // values to pass to components
-    const value = { coinTable, coinChart, formatNumber, currencies, currencySelected };
+    const value = { coinTable, coinChart, formatNumber, currencies, currencySelected, currencyApi };
 
     return (
         <CryptoContext.Provider value={value}>

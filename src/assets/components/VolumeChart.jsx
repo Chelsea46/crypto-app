@@ -24,8 +24,9 @@ import {
     
     export default function VolumeChart(){
 
-        const { coinChart, currencyApi} = useContext(CryptoContext); 
+        const { coinChart, currencyApi, symbol} = useContext(CryptoContext); 
 
+        
         const todayText = new Date().toString().split(" ").splice(1, 3).join(" ");
 
         const generateChartLabels = () => {
@@ -91,7 +92,7 @@ import {
           return <StyledVolumeChart>
                     <div className="barchart-text">
                       <p><strong> Volume 24h </strong></p>
-                      
+                      <h1>{symbol}</h1>
                       <p><strong> {todayText} </strong></p>
                     </div>
                     <Bar options={options} data={data} />

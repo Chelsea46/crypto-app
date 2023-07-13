@@ -7,7 +7,7 @@ export default function Coins() {
 
     return (
         <>
-            <h1>Overview</h1>
+            <h2 className="overview">Overview</h2>
             < CoinChartsWrapper >
                 < CoinChart />
                 < VolumeChart />

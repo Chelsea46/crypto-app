@@ -28,7 +28,7 @@ import {
   
 export default function CoinChart(){
     
-    const { coinChart } = useContext(CryptoContext); 
+    const { coinChart, symbol } = useContext(CryptoContext); 
 
     const generateChartLabels = () => {
         const labels = [];
@@ -108,6 +108,7 @@ export default function CoinChart(){
     return <StyledCoinChart>
                 <div className="chart-text">
                       <p><strong> Price </strong></p>
+                      <h1>{symbol}</h1>
                       <p><strong> {todayText} </strong></p>
                 </div>
                 

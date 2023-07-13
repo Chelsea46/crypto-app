@@ -15,6 +15,8 @@ function CryptoContextProvider(props) {
     const [currencyApi, setCurrencyApi] = useState('');
     // user country state
     const [country, setCountry] = useState('');
+    // currency symbol
+    const [symbol, setSymbol] = useState('');
 
     // lat and long
     useEffect(() => {
@@ -37,13 +39,13 @@ function CryptoContextProvider(props) {
       const euroCountries = ['es', 'de', 'pt', 'fr', 'ie', 'it', 'gr'];
   
       switch(country){
-        case 'gb': setCurrencyApi('gbp');
+        case 'gb': setCurrencyApi('gbp'), setSymbol('£');
         break;
-        case 'usd': setCurrencyApi('usd');
+        case 'usd': setCurrencyApi('usd'), setSymbol('$');
         break;
-        case country.includes(euroCountries): setCurrencyApi('eur');
+        case country.includes(euroCountries): setCurrencyApi('eur'), setSymbol('€');
         break;
-        default: setCurrencyApi('btc')
+        default: setCurrencyApi('btc'), setSymbol('₿');
         break;
       }
     }, [country])
@@ -86,7 +88,7 @@ function CryptoContextProvider(props) {
 
     
     // values to pass to components
-    const value = { coinTable, coinChart, formatNumber, currencies, currencySelected, currencyApi };
+    const value = { coinTable, coinChart, formatNumber, currencies, currencySelected, currencyApi, symbol };
 
     return (
         <CryptoContext.Provider value={value}>

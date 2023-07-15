@@ -1,13 +1,14 @@
 import { useContext } from 'react';
 import { CryptoContext } from '../contexts/CyrptoContext';
-import { StyledCoinTable } from "../components/styled/CoinTable.styled";
+import { StyledCoinTable } from "./styled/CoinTable.styled";
 import { FaCaretDown, FaCaretUp } from  "react-icons/fa6";
+import InfiniteScroll from 'react-infinite-scroll-component';
 import ProgressBar from './ProgressBar';
-import ChartLine from '../components/ChartLine'
+import ChartLine from './ChartLine'
 
 
 export default function CoinTable() {
-  const { coinTable, formatNumber } = useContext(CryptoContext);
+  const { coinTable, formatNumber, getTableData, hasMore } = useContext(CryptoContext);
 
   return (
     <StyledCoinTable>
@@ -26,6 +27,17 @@ export default function CoinTable() {
                 </tr>
             </thead>
             <tbody>
+            <InfiniteScroll
+                dataLength={coinTable.length} //This is important field to render the next data
+                next={getTableData}
+                hasMore={hasMore}
+                loader={<h4>Loading...</h4>}
+                endMessage={
+                <p style={{ textAlign: 'center' }}>
+                    <b>Yay! You have seen it all</b>
+                </p>
+                }
+                >
                 {coinTable.map((coin, index) => (
                     <tr key={coin.id} className='table-row'>
                         <td>{index + 1}</td>
@@ -55,6 +67,7 @@ export default function CoinTable() {
                         </td>
                     </tr>
                 ))}
+                </InfiniteScroll>
             </tbody>
         </table>
     </StyledCoinTable>

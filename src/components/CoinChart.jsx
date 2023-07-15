@@ -28,7 +28,7 @@ import {
   
 export default function CoinChart(){
     
-    const { coinChart, symbol } = useContext(CryptoContext); 
+    const { coinChart, symbol, formatNumber } = useContext(CryptoContext); 
 
     const generateChartLabels = () => {
         const labels = [];
@@ -39,15 +39,23 @@ export default function CoinChart(){
         return labels;
       };
     
-      
-
       const generatePrices = () => {
         if (!coinChart || !coinChart.prices) {
           return [];
         }
         return coinChart.prices.map((price) => price[1]);
       };
-
+      
+      const generateTodayPrice = () => {
+        if (!coinChart || !coinChart.prices) {
+          return [];
+        }
+        const todayDate = moment().format('YYYY-MM-DD');
+        return coinChart.prices
+          .filter((price) => moment(price[0]).isSame(todayDate, 'day'))
+          .map((price) => formatNumber(price[1]))
+          .slice(0, 1);
+      }
       
     const todayText = new Date().toString().split(" ").splice(1, 3).join(" ");
 
@@ -108,7 +116,7 @@ export default function CoinChart(){
     return <StyledCoinChart>
                 <div className="chart-text">
                       <p><strong> Price </strong></p>
-                      <h1>{symbol}</h1>
+                      <h1>{symbol} {generateTodayPrice()}</h1>
                       <p><strong> {todayText} </strong></p>
                 </div>
                 

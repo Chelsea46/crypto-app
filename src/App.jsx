@@ -4,11 +4,11 @@ import Portfolio from './pages/Portfolio';
 import Coins from './pages/Coins';
 import Coin from './pages/Coin';
 import { ThemeProvider } from "styled-components";
-import { themes } from "./assets/styles/colors";
-import { GlobalStyles } from './assets/components/styled/Global';
-import Navbar from './assets/components/Navbar';
-import {Container} from './assets/components/styled/Container.styled';
-import {Overview} from './assets/components/styled/Overview.styled'
+import { themes } from "./styles/colors";
+import { GlobalStyles } from './components/styled/Global';
+import Navbar from './components/Navbar';
+import {Container} from './components/styled/Container.styled';
+import {Overview} from './components/styled/Overview.styled'
 
 
 

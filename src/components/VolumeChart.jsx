@@ -24,7 +24,7 @@ import {
     
     export default function VolumeChart(){
 
-        const { coinChart, currencyApi, symbol} = useContext(CryptoContext); 
+        const { coinChart, currencyApi, symbol, formatNumber} = useContext(CryptoContext); 
 
         
         const todayText = new Date().toString().split(" ").splice(1, 3).join(" ");
@@ -44,6 +44,17 @@ import {
             }
             return coinChart.total_volumes.map((vol) => vol[1]);
           };
+
+          const generateTodayVol = () => {
+            if (!coinChart || !coinChart.total_volumes) {
+              return [];
+            }
+            const todayDate = moment().format('YYYY-MM-DD');
+            return coinChart.total_volumes
+              .filter((vol) => moment(vol[0]).isSame(todayDate, 'day'))
+              .map((vol) => formatNumber(vol[1]))
+              .slice(0, 1);
+          }
         
         const options = {
             scales: {
@@ -92,7 +103,7 @@ import {
           return <StyledVolumeChart>
                     <div className="barchart-text">
                       <p><strong> Volume 24h </strong></p>
-                      <h1>{symbol}</h1>
+                      <h1>{symbol}{generateTodayVol()}</h1>
                       <p><strong> {todayText} </strong></p>
                     </div>
                     <Bar options={options} data={data} />

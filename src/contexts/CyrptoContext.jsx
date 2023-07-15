@@ -17,6 +17,10 @@ function CryptoContextProvider(props) {
     const [country, setCountry] = useState('');
     // currency symbol
     const [symbol, setSymbol] = useState('');
+    // page state
+    const [page, setPage] = useState(1);
+    // has more state
+    const [hasMore, setHasMore] = useState(true)
 
     // lat and long
     useEffect(() => {
@@ -37,23 +41,29 @@ function CryptoContextProvider(props) {
     // switch case for countries currency
     useEffect(() => {
       const euroCountries = ['es', 'de', 'pt', 'fr', 'ie', 'it', 'gr'];
-  
       switch(country){
-        case 'gb': setCurrencyApi('gbp'), setSymbol('£');
+        case 'gb' : setCurrencyApi('gbp'), setSymbol('£');
         break;
-        case 'usd': setCurrencyApi('usd'), setSymbol('$');
+        case 'usd' : setCurrencyApi('usd'), setSymbol('$');
         break;
-        case country.includes(euroCountries): setCurrencyApi('eur'), setSymbol('€');
+        case country.includes(euroCountries) : setCurrencyApi('eur'), setSymbol('€');
         break;
         default: setCurrencyApi('btc'), setSymbol('₿');
         break;
       }
     }, [country])
 
+    async function getTableData(){
+      const response = await axios.get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currencyApi}&order=market_cap_desc&per_page=50&page=${page}&sparkline=true&price_change_percentage=1h%2C24h%2C7d`)
+        // .then(response => setCoinTable(response.data))
+        setCoinTable([...coinTable, response.data])
+        setPage(page+1)
+        setHasMore(response.data.length > 0)
+    }
+
     // api call for table
     useEffect(() => {
-        axios.get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currencyApi}&order=market_cap_desc&per_page=50&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d`)
-        .then(response => setCoinTable(response.data))
+      getTableData()
     }, [country])
 
 
@@ -67,28 +77,46 @@ function CryptoContextProvider(props) {
      const currencies = ['btc', 'usd', 'gbp', 'eur'];
 
     //  function for currency selection
-    function currencySelected(e){
-      setCurrencyApi(e.target.value);
+    function currencySelected(e) {
+      const selectedCurrency = e.target.value;
+      setCurrencyApi(selectedCurrency);
+  
+      switch (selectedCurrency) {
+        case 'gbp':
+          setSymbol('£');
+          break;
+        case 'usd':
+          setSymbol('$');
+          break;
+        case 'eur':
+          setSymbol('€');
+          break;
+        default:
+          setSymbol('₿');
+          break;
+      }
     }
-
+    
     // format Number
     function formatNumber(number) {
-        if (number === null) {
-            return 'N/A';
-        }else if (number >= 1e12) {
-            return (number / 1e12).toFixed(2) + 'T';
-          } else if (number >= 1e9) {
-            return (number / 1e9).toFixed(2) + 'B';
-          } else if (number >= 1e6) {
-            return (number / 1e6).toFixed(2) + 'M';
-          } else {
-            return number.toFixed(2);
-          }
-        }
+      if (number === null) {
+        return 'N/A';
+      } else if (number >= 1e12) {
+        return (number / 1e12).toFixed(2) + 'T';
+      } else if (number >= 1e9) {
+        return (number / 1e9).toFixed(2) + 'B';
+      } else if (number >= 1e6) {
+        return (number / 1e6).toFixed(2) + 'M';
+      } else if (number >= 1e3) {
+        return (number / 1e3).toFixed(2) + 'K';
+      } else {
+        return number.toFixed(2);
+      }
+    }
 
     
     // values to pass to components
-    const value = { coinTable, coinChart, formatNumber, currencies, currencySelected, currencyApi, symbol };
+    const value = { coinTable, coinChart, formatNumber, currencies, currencySelected, currencyApi, symbol, getTableData, hasMore };
 
     return (
         <CryptoContext.Provider value={value}>

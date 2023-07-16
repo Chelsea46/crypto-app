@@ -1,5 +1,6 @@
 
 const ProgressBar = ({formatNumber, progVal1, progVal2}) => {
+    console.log(progVal1)
   return (
     <td>
         <div className="progress-container">

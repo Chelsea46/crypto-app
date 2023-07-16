@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { CryptoContext } from '../contexts/CyrptoContext';
 import { StyledCoinTable } from "./styled/CoinTable.styled";
 import { FaCaretDown, FaCaretUp } from  "react-icons/fa6";
@@ -10,6 +10,17 @@ import ChartLine from './ChartLine'
 export default function CoinTable() {
   const { coinTable, formatNumber, getTableData, hasMore } = useContext(CryptoContext);
 
+  useEffect(() => {
+    getTableData()
+  },[])
+
+  function getCoin(){
+   coinTable.map((coin) => {
+    console.log(coin.sparkline_in_7d.price)
+   })
+  }
+  
+  getCoin()
   return (
     <StyledCoinTable>
         <table className="coin-table">
@@ -63,7 +74,7 @@ export default function CoinTable() {
                         < ProgressBar formatNumber={formatNumber} progVal1={coin.total_volume} progVal2={coin.market_cap} />
                         < ProgressBar formatNumber={formatNumber} progVal1={coin.circulating_supply} progVal2={coin.total_supply}/>
                         <td>
-                             <ChartLine sevenDayData={coin.sparkline_in_7d} last7d={coin.price_change_percentage_7d_in_currency} />
+                             <ChartLine sevenDayData={coin.sparkline_in_7d.price} last7d={coin.price_change_percentage_7d_in_currency} />
                         </td>
                     </tr>
                 ))}

@@ -60,7 +60,7 @@ function CryptoContextProvider(props) {
         setPage(page+1)
         setHasMore(response.data.length > 0)
     }
-
+  
     // api call for table
     useEffect(() => {
       getTableData()

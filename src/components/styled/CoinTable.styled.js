@@ -4,6 +4,9 @@ export const StyledCoinTable = styled.div`
 
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    max-height: 1000px; 
+    overflow-y: auto;
 
     .coin-table .table-row {
         padding: 8px; 

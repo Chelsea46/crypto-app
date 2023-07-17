@@ -14,6 +14,7 @@ export default function CoinTable() {
     getTableData()
   },[])
 
+
   return (
     <StyledCoinTable>
         <table className="coin-table">
@@ -31,50 +32,54 @@ export default function CoinTable() {
                 </tr>
             </thead>
             <tbody>
-            <InfiniteScroll
-                dataLength={coinTable.length} //This is important field to render the next data
-                next={getTableData}
-                hasMore={hasMore}
-                loader={<h4>Loading...</h4>}
-                endMessage={
-                <p style={{ textAlign: 'center' }}>
-                    <b>Yay! You have seen it all</b>
-                </p>
-                }
-                >
-                {coinTable[0].map((coin, index) => (
-                    <tr key={coin.id} className='table-row'>
-                        <td>{index + 1}</td>
+                <InfiniteScroll
+                    dataLength={coinTable.length} //This is important field to render the next data
+                    next={getTableData}
+                    hasMore={hasMore}
+                    loader={<h4>Loading...</h4>}
+                    endMessage={
+                    <p style={{ textAlign: 'center' }}>
+                        <b>Yay! You have seen it all</b>
+                    </p>
+                    }
+                    >
+                    {coinTable.map((coin) => (
+                    <tr key={coin.id} className="table-row">
+                        <td>{coin.index}</td>
                         <td>
-                            <div className="coin-name">
+                        <div className="coin-name">
                             <img src={coin.image} alt={coin.name} className="coin-table-img" />
                             <span>{coin.name}</span>
-                            </div>
+                        </div>
                         </td>
                         <td>{coin.current_price}</td>
-                        <td className={coin.price_change_percentage_1h_in_currency >= 0 ? 'green' : 'red'} >{coin.price_change_percentage_1h_in_currency >= 0 ?
-                            (<FaCaretUp />) : (<FaCaretDown /> )} 
-                            <span>{Math.abs(coin.price_change_percentage_1h_in_currency).toFixed(2)}%</span>
+                        <td className={coin.price_change_percentage_1h_in_currency >= 0 ? 'green' : 'red'}>
+                        {coin.price_change_percentage_1h_in_currency >= 0 ? <FaCaretUp /> : <FaCaretDown />}
+                        <span>{Math.abs(coin.price_change_percentage_1h_in_currency).toFixed(2)}%</span>
                         </td>
-                        <td className={coin.price_change_percentage_24h_in_currency >= 0 ? 'green' : 'red'} >{coin.price_change_percentage_24h_in_currency >= 0 ?
-                            (<FaCaretUp />) : (<FaCaretDown /> )} 
-                            <span>{Math.abs(coin.price_change_percentage_24h_in_currency).toFixed(2)}%</span>
+                        <td className={coin.price_change_percentage_24h_in_currency >= 0 ? 'green' : 'red'}>
+                        {coin.price_change_percentage_24h_in_currency >= 0 ? <FaCaretUp /> : <FaCaretDown />}
+                        <span>{Math.abs(coin.price_change_percentage_24h_in_currency).toFixed(2)}%</span>
                         </td>
-                        <td className={coin.price_change_percentage_7d_in_currency >= 0 ? 'green' : 'red'}>{coin.price_change_percentage_7d_in_currency >= 0 ?
-                            (<FaCaretUp />) : (<FaCaretDown /> )} 
-                            <span>{Math.abs(coin.price_change_percentage_7d_in_currency).toFixed(2)}%</span>
+                        <td className={coin.price_change_percentage_7d_in_currency >= 0 ? 'green' : 'red'}>
+                        {coin.price_change_percentage_7d_in_currency >= 0 ? <FaCaretUp /> : <FaCaretDown />}
+                        <span>{Math.abs(coin.price_change_percentage_7d_in_currency).toFixed(2)}%</span>
                         </td>
-                        < ProgressBar formatNumber={formatNumber} progVal1={coin.total_volume} progVal2={coin.market_cap} />
-                        < ProgressBar formatNumber={formatNumber} progVal1={coin.circulating_supply} progVal2={coin.total_supply}/>
+                        <td>
+                        <ProgressBar formatNumber={formatNumber} progVal1={coin.total_volume} progVal2={coin.market_cap} />
+                        </td>
+                        <td>
+                        <ProgressBar formatNumber={formatNumber} progVal1={coin.circulating_supply} progVal2={coin.total_supply} />
+                        </td>
                         <td>
                         {coin.sparkline_in_7d ? (
                             <ChartLine sevenDayData={coin.sparkline_in_7d} last7d={coin.price_change_percentage_7d_in_currency} />
-                            ) : (
-                                <span>No data available</span>
-                            )}
+                        ) : (
+                            <span>No data available</span>
+                        )}
                         </td>
                     </tr>
-                ))}
+                    ))}
                 </InfiniteScroll>
             </tbody>
         </table>

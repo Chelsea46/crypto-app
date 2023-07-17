@@ -56,9 +56,13 @@ function CryptoContextProvider(props) {
     async function getTableData(){
       const response = await axios.get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currencyApi}&order=market_cap_desc&per_page=50&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d`)
         // .then(response => setCoinTable(response.data))
-        setCoinTable([...coinTable, response.data])
-        setPage(page+1)
-        setHasMore(response.data.length > 0)
+        const data = response.data.map((coin, index) => ({
+          ...coin,
+          index: index + 1
+        }));
+        setCoinTable([...coinTable, ...data]);
+        setPage(page + 1);
+        setHasMore(data.length > 0);
     }
   
     // api call for table

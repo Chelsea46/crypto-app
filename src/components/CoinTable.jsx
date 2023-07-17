@@ -14,13 +14,6 @@ export default function CoinTable() {
     getTableData()
   },[])
 
-  function getCoin(){
-   coinTable.map((coin) => {
-    console.log(coin.sparkline_in_7d.price)
-   })
-  }
-  
-  getCoin()
   return (
     <StyledCoinTable>
         <table className="coin-table">
@@ -49,7 +42,7 @@ export default function CoinTable() {
                 </p>
                 }
                 >
-                {coinTable.map((coin, index) => (
+                {coinTable[0].map((coin, index) => (
                     <tr key={coin.id} className='table-row'>
                         <td>{index + 1}</td>
                         <td>
@@ -74,7 +67,11 @@ export default function CoinTable() {
                         < ProgressBar formatNumber={formatNumber} progVal1={coin.total_volume} progVal2={coin.market_cap} />
                         < ProgressBar formatNumber={formatNumber} progVal1={coin.circulating_supply} progVal2={coin.total_supply}/>
                         <td>
-                             <ChartLine sevenDayData={coin.sparkline_in_7d.price} last7d={coin.price_change_percentage_7d_in_currency} />
+                        {coin.sparkline_in_7d ? (
+                            <ChartLine sevenDayData={coin.sparkline_in_7d} last7d={coin.price_change_percentage_7d_in_currency} />
+                            ) : (
+                                <span>No data available</span>
+                            )}
                         </td>
                     </tr>
                 ))}

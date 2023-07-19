@@ -1,8 +1,9 @@
 import {useParams} from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import CoinLink from '../components/CoinLink';
-import HighLow from '../components/HighLow';
+import CoinLink from '../components/CoinPage/CoinLink';
+import HighLow from '../components/CoinPage/HighLow';
+import CoinMarkCap from '../components/CoinPage/CoinMarkCap';
 import {Container} from '../components/styled/Container.styled'
 
 export default function Coin(){
@@ -36,6 +37,7 @@ export default function Coin(){
             <div className="coin-wrapper">
                 < CoinLink individualCoin={individualCoin} loading ={isLoading}/> 
                 < HighLow individualCoin={individualCoin} loading ={isLoading} />
+                < CoinMarkCap individualCoin={individualCoin} loading ={isLoading} />
             </div>
          </Container>
     )

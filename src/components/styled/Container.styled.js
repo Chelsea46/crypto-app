@@ -13,5 +13,6 @@ export const Container = styled.div `
 
     .coin-wrapper{
         display: flex;
+        justify-content: space-evenly;
     }
 `

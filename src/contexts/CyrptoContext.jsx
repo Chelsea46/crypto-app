@@ -12,7 +12,7 @@ function CryptoContextProvider(props) {
     // chart api state
     const [coinChart, setCoinChart] = useState([]);
     // currency selecting state
-    const [currencyApi, setCurrencyApi] = useState('');
+    const [currencyApi, setCurrencyApi] = useState('btc');
     // user country state
     const [country, setCountry] = useState('');
     // currency symbol
@@ -54,15 +54,11 @@ function CryptoContextProvider(props) {
     }, [country])
 
     async function getTableData(){
-      const response = await axios.get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currencyApi}&order=market_cap_desc&per_page=50&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d`)
+      const response = await axios.get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currencyApi}&order=market_cap_desc&per_page=20&page=${page}&sparkline=true&price_change_percentage=1h%2C24h%2C7d`)
         // .then(response => setCoinTable(response.data))
-        const data = response.data.map((coin, index) => ({
-          ...coin,
-          index: index + 1
-        }));
-        setCoinTable([...coinTable, ...data]);
-        setPage(page + 1);
-        setHasMore(data.length > 0);
+        setCoinTable([...coinTable, ...response.data])
+        setPage(page+1)
+        setHasMore(response.data.length > 0)
     }
   
     // api call for table
@@ -122,6 +118,8 @@ function CryptoContextProvider(props) {
     // values to pass to components
     const value = { coinTable, coinChart, formatNumber, currencies, currencySelected, currencyApi, symbol, getTableData, hasMore };
 
+    
+    
     return (
         <CryptoContext.Provider value={value}>
         {props.children}

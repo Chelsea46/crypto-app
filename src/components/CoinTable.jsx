@@ -1,4 +1,5 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { CryptoContext } from '../contexts/CyrptoContext';
 import { StyledCoinTable } from "./styled/CoinTable.styled";
 import { FaCaretDown, FaCaretUp } from  "react-icons/fa6";
@@ -9,29 +10,12 @@ import ChartLine from './ChartLine'
 
 export default function CoinTable() {
   const { coinTable, formatNumber, getTableData, hasMore } = useContext(CryptoContext);
-
-  useEffect(() => {
-    getTableData()
-  },[])
-
+  
 
   return (
     <StyledCoinTable>
-        <table className="coin-table">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>1h</th>
-                    <th>24h</th>
-                    <th>7d</th>
-                    <th>24h Vol/Market Cap</th>
-                    <th>Circulating/Total Sup</th>
-                    <th>Last 7d</th>
-                </tr>
-            </thead>
-            <tbody>
+        
+            
                 <InfiniteScroll
                     dataLength={coinTable.length} //This is important field to render the next data
                     next={getTableData}
@@ -43,15 +27,33 @@ export default function CoinTable() {
                     </p>
                     }
                     >
-                    {coinTable.map((coin) => (
-                    <tr key={coin.id} className="table-row">
-                        <td>{coin.index}</td>
+                    <table className="coin-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>1h</th>
+                                <th>24h</th>
+                                <th>7d</th>
+                                <th>24h Vol/Market Cap</th>
+                                <th>Circulating/Total Sup</th>
+                                <th>Last 7d</th>
+                            </tr>
+                        </thead>
+                    <tbody>
+                    {coinTable.map((coin, index) => (
+                    <tr key={coin.id} >
+                        <td>{index+1}</td>
+                    
                         <td>
                         <div className="coin-name">
-                            <img src={coin.image} alt={coin.name} className="coin-table-img" />
-                            <span>{coin.name}</span>
+                           <Link to={`/coin/${coin.id}`}>
+                                <img src={coin.image} alt={coin.name} className="coin-table-img" />
+                                <span>{coin.name}</span>
+                            </Link>
                         </div>
-                        </td>
+                        </td> 
                         <td>{coin.current_price}</td>
                         <td className={coin.price_change_percentage_1h_in_currency >= 0 ? 'green' : 'red'}>
                         {coin.price_change_percentage_1h_in_currency >= 0 ? <FaCaretUp /> : <FaCaretDown />}
@@ -80,9 +82,9 @@ export default function CoinTable() {
                         </td>
                     </tr>
                     ))}
+                </tbody>
+            </table>
                 </InfiniteScroll>
-            </tbody>
-        </table>
     </StyledCoinTable>
   );
 }

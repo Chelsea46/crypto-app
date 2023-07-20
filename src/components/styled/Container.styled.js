@@ -14,5 +14,12 @@ export const Container = styled.div `
     .coin-wrapper{
         display: flex;
         justify-content: space-evenly;
+        margin-bottom: 3em;
+    }
+
+    .summary{
+        margin-top: 2em;
+        font-size: 1.4rem;
+        font-weight: 500;
     }
 `

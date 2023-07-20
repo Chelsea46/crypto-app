@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const CoinLinkStlye = styled.div`
-    width: 20%;
+    width: 21%;
     background-color: ${(props) => props.theme.body.background};
     display: flex;
     flex-direction: column;
@@ -10,7 +10,6 @@ export const CoinLinkStlye = styled.div`
     padding: 2em;
     border-radius: 10px;
     margin-top: 2em;
-    margin-left: 2em;
 
     img{
         background:  ${(props) => props.theme.active_coin_portfolio.background};

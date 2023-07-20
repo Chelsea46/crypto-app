@@ -1,4 +1,4 @@
-import { CoinLinkStlye} from "../styled/CoinLink.styled";
+import { CoinLinkStlye} from "../styled/CoinPage/CoinLink.styled";
 
 
 export default function CoinLink({ individualCoin, loading }) {

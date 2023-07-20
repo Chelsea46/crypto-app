@@ -114,7 +114,6 @@ function CryptoContextProvider(props) {
       }
     }
 
-    
     // values to pass to components
     const value = { coinTable, coinChart, formatNumber, currencies, currencySelected, currencyApi, symbol, getTableData, hasMore };
 

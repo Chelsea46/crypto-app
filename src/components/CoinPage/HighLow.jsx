@@ -1,8 +1,8 @@
-import { CryptoContext } from '../contexts/CyrptoContext';
+import { CryptoContext } from '../../contexts/CyrptoContext';
 import { useContext, useEffect, useState } from 'react';
 import { FaCaretDown, FaCaretUp } from  "react-icons/fa6";
 import { BsStack } from "react-icons/bs";
-import { HighLowStlye } from './styled/HighLow.styled';
+import { HighLowStlye } from '../styled/HighLow.styled';
 
 export default function HighLow({individualCoin, loading}){
     // states from context

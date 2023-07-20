@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const CoinMarketCapStlye = styled.div`
-    width: 25%;
+    width: 330px;
     background-color: ${(props) => props.theme.body.background};
     display: flex;
     flex-direction: column;
@@ -9,7 +9,6 @@ export const CoinMarketCapStlye = styled.div`
     align-items: center;
     border-radius: 10px;
     margin-top: 2em;
-    margin-left: 2em;
     font-size: .85em;
 
     li{
@@ -23,10 +22,19 @@ export const CoinMarketCapStlye = styled.div`
         margin-right: .3em;
     }
 
-    .top-ul, btm-ul{
+    .top-ul, .btm-ul{
         display:flex;
         flex-direction: column;
         margin-right:0;
+        margin-left: -2.5em;
+    }
+
+    .top-ul{
+        margin-left: -7.5em;
+    }
+
+    .btm-ul{
+        margin-left:-4.5em;
     }
 
     .red{

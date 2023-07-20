@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const HighLowStlye = styled.div`
-    width: 25%;
+    width: 300px;
     background-color: ${(props) => props.theme.body.background};
     display: flex;
     flex-direction: column;

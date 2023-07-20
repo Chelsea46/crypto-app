@@ -4,6 +4,7 @@ import axios from 'axios';
 import CoinLink from '../components/CoinPage/CoinLink';
 import HighLow from '../components/CoinPage/HighLow';
 import CoinMarkCap from '../components/CoinPage/CoinMarkCap';
+import CoinDesc from '../components/CoinPage/CoinDesc';
 import {Container} from '../components/styled/Container.styled'
 
 export default function Coin(){
@@ -33,12 +34,13 @@ export default function Coin(){
 
     return(
         <Container>
-            <h2 className='summary'>Your Summary -</h2>
+            <h2 className='summary'>Your Summary:</h2>
             <div className="coin-wrapper">
                 < CoinLink individualCoin={individualCoin} loading ={isLoading}/> 
                 < HighLow individualCoin={individualCoin} loading ={isLoading} />
                 < CoinMarkCap individualCoin={individualCoin} loading ={isLoading} />
             </div>
+            < CoinDesc individualCoin={individualCoin} loading ={isLoading} />
          </Container>
     )
 }

@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { CryptoContext } from '../../contexts/CyrptoContext';
 import { FaCaretDown, FaCaretUp, FaSquarePlus} from  "react-icons/fa6";
-import { CoinMarketCapStlye } from "../styled/CoinMarketCap.styled";
+import { CoinMarketCapStlye } from "../styled/CoinPage/CoinMarketCap.styled";
 
 export default function CoinMarkCap({ individualCoin, loading }) {
 

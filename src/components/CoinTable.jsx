@@ -5,6 +5,7 @@ import { StyledCoinTable } from "./styled/CoinTable.styled";
 import { FaCaretDown, FaCaretUp } from  "react-icons/fa6";
 import InfiniteScroll from 'react-infinite-scroll-component';
 import ProgressBar from './ProgressBar';
+import { BouncingDotsLoader } from './BouncingLoader';
 import ChartLine from './ChartLine'
 
 
@@ -20,7 +21,7 @@ export default function CoinTable() {
                     dataLength={coinTable.length} //This is important field to render the next data
                     next={getTableData}
                     hasMore={hasMore}
-                    loader={<h4>Loading...</h4>}
+                    loader={<BouncingDotsLoader/>}
                     endMessage={
                     <p style={{ textAlign: 'center' }}>
                         <b>Yay! You have seen it all</b>

@@ -8,7 +8,7 @@ export const BouncingLoaderStyle = styled.div `
         background-color: ${(props) => props.theme.body.background};
         display: flex;
         justify-content: center;
-        margin: ;
+        margin-bottom: 2em;
         height: 190px;
         align-items: center;
   }

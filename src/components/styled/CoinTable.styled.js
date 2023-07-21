@@ -8,6 +8,10 @@ export const StyledCoinTable = styled.div`
     .coin-table .table-row {
         padding: 8px; 
       }
+
+      .coin-table tr:last-child td {
+        border-bottom: none;
+      }
       
       .green{
         color: green;

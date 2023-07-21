@@ -26,16 +26,10 @@ export const CoinMarketCapStlye = styled.div`
         display:flex;
         flex-direction: column;
         margin-right:0;
-        margin-left: -2.5em;
+        
     }
 
-    .top-ul{
-        margin-left: -7.5em;
-    }
-
-    .btm-ul{
-        margin-left:-4.5em;
-    }
+    
 
     .red{
         color:red

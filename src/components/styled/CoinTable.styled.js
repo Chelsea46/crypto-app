@@ -18,7 +18,7 @@ export const StyledCoinTable = styled.div`
       }
       
     .coin-table {
-        width: 30%;
+        width: 100%;
         border-collapse: collapse;
         background-color: ${(props) => props.theme.body.background};
         border-radius: 10px;
@@ -39,8 +39,8 @@ export const StyledCoinTable = styled.div`
     }
 
     .coin-table-img {
-        width: 24px;
-        height: 24px;
+        width: 36px;
+        height: 34px;
         margin-right: 8px;
     }
     
@@ -68,5 +68,15 @@ export const StyledCoinTable = styled.div`
     .bullet{
         display: inline-block;
         padding-right: 5px;
+    }
+
+    a{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .infinite-scroll-component__outerdiv{
+        width: 90%;
     }
 `

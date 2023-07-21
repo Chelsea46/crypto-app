@@ -10,16 +10,17 @@ export default function HighLow({individualCoin, loading}){
 
     // state for percentage
     const [percentageCoin, setPercentageCoin] = useState([])
-
     
     useEffect(() => {
-        coinTable.map((coin) => {
-            if(coin.id == individualCoin.id){
-                setPercentageCoin(coin)
-                console.log(percentageCoin)
+        if(individualCoin.id){
+            const findCoin = coinTable.find(coin => {
+                return coin.id == individualCoin.id;
+            })
+            if(findCoin){
+                setPercentageCoin(findCoin);
             }
-        });
-    }, [coinTable])
+        }
+    }, [coinTable, individualCoin])
     
     if (loading || Object.keys(individualCoin).length === 0) {
         return <div>Loading...</div>;
@@ -31,6 +32,11 @@ export default function HighLow({individualCoin, loading}){
     const formattedDateAth = `${dateAth.getDate()}-${dateAth.getMonth() + 1}-${dateAth.getFullYear()}`;
     const formattedDateAtl = `${dateAtl.getDate()}-${dateAtl.getMonth() + 1}-${dateAtl.getFullYear()}`;
   
+    console.log(individualCoin)
+
+    console.log(coinTable)
+
+    // console.log(percentageCoin)
       return (
          <HighLowStlye>
             <h2 className='current-price'>{symbol}{individualCoin.market_data.current_price[currencyApi]}</h2>

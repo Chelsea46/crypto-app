@@ -19,11 +19,11 @@ export default function Navbar({onClick, theme}){
                         {/* <FaSearchengin className="search-icon"/> */}
                         <input type="text" name="" id="" placeholder = "Search..." className="search-bar"/>
                     </form>
-                    <select name="" id="" className="nav-dropdown">
+                    <select name="" id="" className="nav-dropdown" onChange={currencySelected} >
                     {currencies.map((val) => {
                        return(
                         <>
-                            <option value={val} onChange={currencySelected}>{val.toUpperCase()}</option>
+                            <option value={val} >{val.toUpperCase()}</option>
                         </>
                          )
                     })};

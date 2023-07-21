@@ -34,7 +34,7 @@ export default function Coin(){
 
     return(
         <Container>
-            <h2 className='summary'>Your Summary:</h2>
+            <h2 className='summary'>Summary:</h2>
             <div className="coin-wrapper">
                 < CoinLink individualCoin={individualCoin} loading ={isLoading}/> 
                 < HighLow individualCoin={individualCoin} loading ={isLoading} />

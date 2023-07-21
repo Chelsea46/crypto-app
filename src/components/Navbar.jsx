@@ -23,7 +23,7 @@ export default function Navbar({onClick, theme}){
                     {currencies.map((val) => {
                        return(
                         <>
-                            <option value={val} onMouseUp={currencySelected}>{val.toUpperCase()}</option>
+                            <option value={val} onChange={currencySelected}>{val.toUpperCase()}</option>
                         </>
                          )
                     })};

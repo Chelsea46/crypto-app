@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 
 export default function Navbar({onClick, theme}){
-    const { currencies, currencySelected } = useContext(CryptoContext);
+    const { currencies, currencySelected, symbol } = useContext(CryptoContext);
     
     return(
         <StyledNav theme={theme}>
@@ -19,15 +19,20 @@ export default function Navbar({onClick, theme}){
                         {/* <FaSearchengin className="search-icon"/> */}
                         <input type="text" name="" id="" placeholder = "Search..." className="search-bar"/>
                     </form>
-                    <select name="" id="" className="nav-dropdown" onChange={currencySelected} >
-                    {currencies.map((val) => {
-                       return(
-                        <>
-                            <option value={val} >{val.toUpperCase()}</option>
-                        </>
-                         )
-                    })};
-                </select>
+                    <div className="select-container">
+                        <div className="symbol">
+                            <span>{symbol}</span>
+                        </div>
+                        <select name="" id="" className="nav-dropdown" onChange={currencySelected} >
+                        {currencies.map((val) => {
+                            return(
+                                <>
+                                    <option value={val} >{val.toUpperCase()}</option>
+                                </>
+                                )
+                            })};
+                        </select>
+                    </div>
                 <div className="toggle-mode" onClick={onClick}><FaCircleHalfStroke className="toggle"/></div>
             </div>
         </StyledNav>

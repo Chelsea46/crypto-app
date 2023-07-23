@@ -1,17 +1,19 @@
-import { useContext } from 'react';
+import { useContext} from 'react';
 import { CryptoContext } from '../../contexts/CyrptoContext';
 import { FaCaretDown, FaCaretUp, FaSquarePlus} from  "react-icons/fa6";
 import { CoinMarketCapStlye } from "../styled/CoinPage/CoinMarketCap.styled";
+import MarketCapBar from '../Bars/MarketCapBar';
 
-export default function CoinMarkCap({ individualCoin, loading }) {
+export default function CoinMarkCap({ individualCoin, loading, tableData }) {
 
-    const { currencyApi, symbol, coinTable, formatNumber} = useContext(CryptoContext);
+    // state for vol
+    
+    const { currencyApi, symbol, formatNumber} = useContext(CryptoContext);
 
     if (loading) {
       return <div>Loading...</div>; 
     }
 
-    console.log(individualCoin.market_data.max_supply)
     return (
         <CoinMarketCapStlye>
         <ul className="top-ul">
@@ -32,10 +34,12 @@ export default function CoinMarkCap({ individualCoin, loading }) {
 
             <li><FaSquarePlus className="sqaure"/>
                 <span className='title'>Vol 24h:</span>
+                <span>{formatNumber(tableData.total_volume)}</span>
             </li>
 
             <li><FaSquarePlus className="sqaure" />
                 <span className='title'>Vol / Market:</span>
+                <span>{formatNumber(tableData.total_volume / tableData.market_cap)}</span>
             </li>
 
         </ul>
@@ -55,6 +59,7 @@ export default function CoinMarkCap({ individualCoin, loading }) {
                 <span className='max-sup title' > Max Supply: </span>
                 <span>{individualCoin.market_data.max_supply}</span>
             </li>
+            <MarketCapBar progVal1={individualCoin.market_data.total_volume[currencyApi]} progVal2={individualCoin.market_data.circulating_supply} />
         </ul>
         </CoinMarketCapStlye>
     )

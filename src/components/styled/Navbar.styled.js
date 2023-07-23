@@ -36,7 +36,7 @@ export const StyledNav = styled.nav `
         align-items:center
     }
     
-    .search-bar, .nav-dropdown, .toggle-mode{
+    .search-bar, .select-container, .nav-dropdown, .toggle-mode{
         border-radius: 10px;
         color: ${(props) => props.theme.body.color};
         background:  ${(props) => props.theme.active_coin_portfolio.background};
@@ -48,8 +48,15 @@ export const StyledNav = styled.nav `
         padding: .3em .75em .3em .75em;
     }
 
-    .nav-dropdown, .toggle-mode{
+    .select-container, .toggle-mode{
         margin-left: 1em;
+    }
+
+    .select-container{
+        padding: 1em;
+        display: flex;
+        flex-direction: row;
+        font-weight: bold;
     }
 
     .toggle-mode{
@@ -57,6 +64,20 @@ export const StyledNav = styled.nav `
     }
 
     .nav-dropdown{
-        padding: 1em;
+        border: none;
+        font-size: 1em;
+    }
+
+    .symbol{
+        display: flex;
+        width: 25px;
+        height: 25px;
+        background: rgb(25, 27, 31);
+        -webkit-box-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        align-items: center;
+        border-radius: 50%;
+        color: rgb(0, 255, 95);
     }
 `

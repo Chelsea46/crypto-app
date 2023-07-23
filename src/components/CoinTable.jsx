@@ -4,9 +4,10 @@ import { CryptoContext } from '../contexts/CyrptoContext';
 import { StyledCoinTable } from "./styled/CoinTable.styled";
 import { FaCaretDown, FaCaretUp } from  "react-icons/fa6";
 import InfiniteScroll from 'react-infinite-scroll-component';
-import ProgressBar from './ProgressBar';
+import ProgressBar from './Bars/ProgressBar';
 import { BouncingDotsLoader } from './BouncingLoader';
-import ChartLine from './ChartLine'
+import ChartLine from './ChartLine';
+import { BsFilter } from "react-icons/bs";
 
 
 export default function CoinTable() {
@@ -32,11 +33,11 @@ export default function CoinTable() {
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Name</th>
-                                <th>Price</th>
-                                <th>1h</th>
-                                <th>24h</th>
-                                <th>7d</th>
+                                <th>Name <BsFilter/> </th>
+                                <th>Price <BsFilter/> </th>
+                                <th>1h <BsFilter/> </th>
+                                <th>24h <BsFilter/> </th>
+                                <th>7d <BsFilter/> </th>
                                 <th>24h Vol/Market Cap</th>
                                 <th>Circulating/Total Sup</th>
                                 <th>Last 7d</th>

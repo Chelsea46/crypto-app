@@ -1,5 +1,6 @@
 import {useParams} from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { CryptoContext } from '../contexts/CyrptoContext';
 import axios from 'axios';
 import CoinLink from '../components/CoinPage/CoinLink';
 import HighLow from '../components/CoinPage/HighLow';
@@ -8,6 +9,12 @@ import CoinDesc from '../components/CoinPage/CoinDesc';
 import {Container} from '../components/styled/Container.styled'
 
 export default function Coin(){
+
+  const { coinTable } = useContext(CryptoContext);
+
+  // state for coinTable data
+  const [tableData, setTableData] = useState([]);
+
     // params
     const {id} = useParams()
     
@@ -32,13 +39,24 @@ export default function Coin(){
           });
       }, [id]);
 
+      useEffect(() => {
+        if (individualCoin.id) {
+          const findCoin = coinTable.find(coin => coin.id === individualCoin.id);
+          if (findCoin) {
+            setTableData(findCoin);
+          }
+        }
+      }, [coinTable, individualCoin]);
+      
+
+    console.log(coinTable)
     return(
         <Container>
             <h2 className='summary'>Summary:</h2>
             <div className="coin-wrapper">
                 < CoinLink individualCoin={individualCoin} loading ={isLoading}/> 
-                < HighLow individualCoin={individualCoin} loading ={isLoading} />
-                < CoinMarkCap individualCoin={individualCoin} loading ={isLoading} />
+                < HighLow individualCoin={individualCoin} loading ={isLoading} tableData = {tableData} />
+                < CoinMarkCap individualCoin={individualCoin} loading ={isLoading} tableData = {tableData} />
             </div>
             < CoinDesc individualCoin={individualCoin} loading ={isLoading} />
          </Container>

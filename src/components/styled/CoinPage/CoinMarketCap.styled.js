@@ -6,7 +6,6 @@ export const CoinMarketCapStlye = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     border-radius: 10px;
     margin-top: 2em;
     font-size: .85em;

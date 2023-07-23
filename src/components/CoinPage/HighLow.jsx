@@ -4,23 +4,25 @@ import { FaCaretDown, FaCaretUp } from  "react-icons/fa6";
 import { BsStack } from "react-icons/bs";
 import { HighLowStlye } from '../styled/CoinPage/HighLow.styled';
 
-export default function HighLow({individualCoin, loading}){
+export default function HighLow({individualCoin, loading, tableData}){
     // states from context
     const { currencyApi, symbol, coinTable } = useContext(CryptoContext);
 
     // state for percentage
-    const [percentageCoin, setPercentageCoin] = useState([])
+    // const [percentageCoin, setPercentageCoin] = useState([])
+    
+    // useEffect(() => {
+    //     if(individualCoin.id){
+    //         const findCoin = coinTable.find(coin => {
+    //             return coin.id == individualCoin.id;
+    //         })
+    //         if(findCoin){
+    //             setPercentageCoin(findCoin);
+    //         }
+    //     }
+    // }, [coinTable, individualCoin])
+    console.log(tableData)
 
-    
-    useEffect(() => {
-        coinTable.map((coin) => {
-            if(coin.id == individualCoin.id){
-                setPercentageCoin(coin)
-                console.log(percentageCoin)
-            }
-        });
-    }, [coinTable])
-    
     if (loading || Object.keys(individualCoin).length === 0) {
         return <div>Loading...</div>;
     }
@@ -30,14 +32,14 @@ export default function HighLow({individualCoin, loading}){
     const dateAtl = new Date(individualCoin.market_data.atl_date[currencyApi]);
     const formattedDateAth = `${dateAth.getDate()}-${dateAth.getMonth() + 1}-${dateAth.getFullYear()}`;
     const formattedDateAtl = `${dateAtl.getDate()}-${dateAtl.getMonth() + 1}-${dateAtl.getFullYear()}`;
-  
+
       return (
          <HighLowStlye>
             <h2 className='current-price'>{symbol}{individualCoin.market_data.current_price[currencyApi]}</h2>
 
-            {percentageCoin &&  <p className={percentageCoin.price_change_percentage_24h_in_currency >= 0 ? 'green' : 'red'}>
-            {percentageCoin.price_change_percentage_24h_in_currency >= 0 ? <FaCaretUp /> : <FaCaretDown />}
-            <span>{Math.abs(percentageCoin.price_change_percentage_24h_in_currency).toFixed(2)}%</span>
+            {tableData &&  <p className={tableData.price_change_percentage_24h_in_currency >= 0 ? 'green' : 'red'}>
+            {tableData.price_change_percentage_24h_in_currency >= 0 ? <FaCaretUp /> : <FaCaretDown />}
+            <span>{Math.abs(tableData.price_change_percentage_24h_in_currency).toFixed(2)}%</span>
             </p>}
 
             <BsStack className='stack'/>

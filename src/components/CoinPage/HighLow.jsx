@@ -8,21 +8,6 @@ export default function HighLow({individualCoin, loading, tableData}){
     // states from context
     const { currencyApi, symbol, coinTable } = useContext(CryptoContext);
 
-    // state for percentage
-    // const [percentageCoin, setPercentageCoin] = useState([])
-    
-    // useEffect(() => {
-    //     if(individualCoin.id){
-    //         const findCoin = coinTable.find(coin => {
-    //             return coin.id == individualCoin.id;
-    //         })
-    //         if(findCoin){
-    //             setPercentageCoin(findCoin);
-    //         }
-    //     }
-    // }, [coinTable, individualCoin])
-    console.log(tableData)
-
     if (loading || Object.keys(individualCoin).length === 0) {
         return <div>Loading...</div>;
     }

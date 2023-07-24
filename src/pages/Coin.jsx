@@ -48,8 +48,6 @@ export default function Coin(){
         }
       }, [coinTable, individualCoin]);
       
-
-    console.log(coinTable)
     return(
         <Container>
             <h2 className='summary'>Summary:</h2>

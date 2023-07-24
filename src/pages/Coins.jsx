@@ -1,7 +1,7 @@
-import CoinTable from "../components/CoinTable";
-import CoinChart from "../components/CoinChart";
-import VolumeChart from "../components/VolumeChart";
-import { CoinChartsWrapper } from "../components/styled/CoinChartsWrapper.styled";
+import CoinTable from "../components/CoinsPage/CoinTable";
+import CoinChart from "../components/CoinsPage/CoinChart";
+import VolumeChart from "../components/CoinsPage/VolumeChart";
+import { CoinChartsWrapper } from "../components/styled/CoinsPage/CoinChartsWrapper.styled";
 
 export default function Coins() {
 

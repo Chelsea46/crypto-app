@@ -10,11 +10,15 @@ const AssetsButtonStyled = styled.div `
     button{
         background: rgb(6, 213, 84);
         color: ${(props) => props.theme.body.color};
-        border: 1px solid rgb(6, 213, 84);
+        border: none;
         font-size: 1.4rem;
         font-weight: 700;
         padding: 1em 3em;
         border-radius: 20px;
+    }
+
+    button:hover{
+        background-color: ${(props) => props.theme.body.background};
     }
 
 `

@@ -7,7 +7,7 @@ const MarketCapBar = ({ progVal1, progVal2 }) => {
       <progress className="mark-cap-bar"
         value={progVal1}
         max={progVal2}
-        style={{ backgroundColor: "rgb(26, 215, 97)", borderRadius: "8px", borderStyle: "none", height: "10px", marginTop: "1em"}} // Set the color of progVal1
+        style={{ backgroundColor: "rgb(26, 215, 97)", borderRadius: "10px", borderStyle: "none", height: "10px", marginTop: "1em"}} 
       >
         {progressValue}%
       </progress>

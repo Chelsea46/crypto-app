@@ -1,10 +1,12 @@
+import AssetsButton from "../components/PortfolioPage/AssetsButton"
+
+
 export default function Portfolio(){
     console.log('portfolio ran')
     return (
         <>
-            <h1>
-                Portfolio
-            </h1>
+           <AssetsButton />
+           <h2>Your Summary</h2>
         </>
     )
 }

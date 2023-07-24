@@ -1,12 +1,20 @@
-import AssetsButton from "../components/PortfolioPage/AssetsButton"
+import { useState } from "react";
+import AssetsButton from "../components/PortfolioPage/AssetsButton";
+import AssetsModal from "../components/PortfolioPage/AssetsModal";
 
 
 export default function Portfolio(){
-    console.log('portfolio ran')
+    
+    const [modalClosed, setModalClosed] = useState(true);
+
+    function addModal(){
+        setModalClosed(false)
+    }
     return (
         <>
-           <AssetsButton />
+           <AssetsButton addModal={addModal} />
            <h2>Your Summary</h2>
+           {!modalClosed && <AssetsModal setModalClosed={setModalClosed}/>}
         </>
     )
 }

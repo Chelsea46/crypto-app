@@ -7,6 +7,7 @@ import { ThemeProvider } from "styled-components";
 import { themes } from "./styles/colors";
 import { GlobalStyles } from './components/styled/Global';
 import Navbar from './components/Navbar';
+import MarketData from './components/MarketData';
 import {Container} from './components/styled/Container.styled';
 import {Overview} from './components/styled/Overview.styled'
 
@@ -23,6 +24,7 @@ function App() {
       <Container>
         <GlobalStyles theme={getCurrentTheme()} />
         <Navbar onClick={toggleTheme} theme={getCurrentTheme()} />
+        <MarketData />
         <Routes>
           <Route path='/' element={ < Coins /> }/>
           <Route path='/portfolio' element={ < Portfolio /> }/>

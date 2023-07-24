@@ -1,7 +1,7 @@
 import { useContext, useEffect } from 'react';
 import moment from 'moment';
-import { CryptoContext } from '../contexts/CyrptoContext';
-import { StyledVolumeChart } from './styled/VolumeChart.styled';
+import { CryptoContext } from '../../contexts/CyrptoContext';
+import { StyledVolumeChart } from '../styled/CoinsPage/VolumeChart.styled';
 import {
     Chart as ChartJS,
     CategoryScale,

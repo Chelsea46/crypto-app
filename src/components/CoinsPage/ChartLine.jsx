@@ -1,4 +1,4 @@
-import { StyledChartLine } from './styled/ChartLine.styled';
+import { StyledChartLine } from '../styled/CoinsPage/ChartLine.styled';
 import {
     Chart as ChartJS,
     CategoryScale,

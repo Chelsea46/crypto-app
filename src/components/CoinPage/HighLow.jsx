@@ -30,8 +30,11 @@ export default function HighLow({individualCoin, loading, tableData}){
     // format ath atl dates
     const dateAth = new Date(individualCoin.market_data.ath_date[currencyApi]);
     const dateAtl = new Date(individualCoin.market_data.atl_date[currencyApi]);
-    const formattedDateAth = `${dateAth.getDate()}-${dateAth.getMonth() + 1}-${dateAth.getFullYear()}`;
-    const formattedDateAtl = `${dateAtl.getDate()}-${dateAtl.getMonth() + 1}-${dateAtl.getFullYear()}`;
+
+    const options = { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' };
+    const formattedDateAth = dateAth.toLocaleString('en-US', options);
+    const formattedDateAtl = dateAtl.toLocaleString('en-US', options);
+
 
       return (
          <HighLowStlye>
@@ -46,19 +49,18 @@ export default function HighLow({individualCoin, loading, tableData}){
 
             <div className="ath-atl-container">
                 <div className="ath-list">
-                    <p className='ath-title'>ATH:</p>
                     <ul>
-                        <li>{symbol}{individualCoin.market_data.ath[currencyApi]}</li>
-                        <li>{individualCoin.market_data.ath_change_percentage[currencyApi].toFixed(2)}%</li>
-                        <li>{formattedDateAth}</li>
+                        <li><FaCaretUp className='green'/><span className='ath-title'>All time high:</span> {symbol}{individualCoin.market_data.ath[currencyApi]}</li>
+                        {/* <li>{individualCoin.market_data.ath_change_percentage[currencyApi].toFixed(2)}%</li> */}
+                        <li className='date'>{formattedDateAth}</li>
                     </ul>
                 </div>
                 <div className="atl-list">
-                    <p className='atl-title'>ATL:</p>
                     <ul>
-                        <li>{symbol}{individualCoin.market_data.atl[currencyApi]}</li>
-                        <li>{individualCoin.market_data.atl_change_percentage[currencyApi].toFixed(2)}%</li>
-                        <li>{formattedDateAtl}</li>
+                    
+                        <li><FaCaretDown className='red'/><span className='atl-title'>All time low:</span>{symbol}{individualCoin.market_data.atl[currencyApi]}</li>
+                        {/* <li>{individualCoin.market_data.atl_change_percentage[currencyApi].toFixed(2)}%</li> */}
+                        <li className='date'>{formattedDateAtl}</li>
                     </ul>
                 </div>
             </div>

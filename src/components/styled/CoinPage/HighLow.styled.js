@@ -22,22 +22,26 @@ export const HighLowStlye = styled.div`
 
     .ath-atl-container{
         display: flex;
+        flex-direction: column;
+        margin-top: 2em;
     }
 
     .ath-list, .atl-list{
         display:flex;
-        flex-direction: column;
         align-items: center;
-        font-size: .80em;
+        font-size: .87em;
     }
 
     li{
         list-style: none;
         text-aling: left;
+        
     }
 
     .atl-title, .ath-title{
         font-weight: bold;
+        font-size: 1.2em;
+        margin-right: .5em;
     }
 
     .stack{
@@ -46,5 +50,10 @@ export const HighLowStlye = styled.div`
 
     .current-price{
         margin-bottom: 0em;
+    }
+
+    .date{
+        margin-top: .5em;
+       
     }
 `

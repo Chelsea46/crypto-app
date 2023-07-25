@@ -1,15 +1,26 @@
-import { useState } from "react";
+import { useState, useContext, useEffect} from "react";
 import AssetsButton from "../components/PortfolioPage/AssetsButton";
 import AssetsModal from "../components/PortfolioPage/AssetsModal";
+import { PortfolioContext } from "../contexts/PortfolioContext";
 
 
 export default function Portfolio(){
-    
-    const [modalClosed, setModalClosed] = useState(true);
 
+    const {fetchApiData, setResults} = useContext(PortfolioContext)
+
+    useEffect(() => {
+        fetchApiData();
+      }, []);
+      
+    // modal state
+    const [modalClosed, setModalClosed] = useState(false);
+
+    // modal open close function
     function addModal(){
-        setModalClosed(false)
+        setModalClosed(false);
+        setResults([])
     }
+
     return (
         <>
            <AssetsButton addModal={addModal} />

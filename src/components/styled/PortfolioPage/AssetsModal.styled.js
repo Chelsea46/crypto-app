@@ -56,7 +56,7 @@ const StyledAssetsModal = styled.div `
         border-radius: 10px;
     }
 
-    .right > input{
+    .right > input, .search-bar{
         color: ${(props) => props.theme.body.color};
         background-color: ${(props) => props.theme.body.background};
         border: none;
@@ -64,6 +64,34 @@ const StyledAssetsModal = styled.div `
         margin-bottom: 1em;
         height: 150px;
         font-size: 1.2em;
+    }
+
+    .search-bar{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .search-bar > button{
+        width: 20%;
+        background-color: #ffff;
+        border: none;
+        border-radius: 10px;
+    }
+
+    .dollar{
+        font-size: 1.3em;
+        color: rgb(6, 213, 84);
+    }
+    
+
+    .search-bar > input{
+        height: 80%;
+        color: ${(props) => props.theme.body.color};
+        background-color: ${(props) => props.theme.body.background};
+        border: none;
+        font-size: 1em;
+        border-radius: 10px;
+        width:80%;
     }
 
     .close, .save {
@@ -92,6 +120,28 @@ const StyledAssetsModal = styled.div `
         display: flex;
         justify-content: center;
     }
+
+    .option{
+        padding: .4em;
+        cursor: pointer;  
+        background-color: ${(props) => props.theme.body.background};
+    }
+
+    .option:hover{
+        background-color: ${(props) => props.theme.active_coin_portfolio.background};
+    }
+
+    .dropdown {
+        max-height: 100px;
+        overflow-y: auto;
+        background-color: #f1f1f1;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        position: absolute;
+        width: 100%;
+        width: 300px;
+      }
+      
 `
 
 export default StyledAssetsModal

@@ -63,9 +63,9 @@ function CryptoContextProvider(props) {
   
     // api call for table
 
-    useEffect(() => {
-      getTableData()
-    }, [country])
+    // useEffect(() => {
+    //   getTableData()
+    // }, [country])
 
 
     // api call for the chart

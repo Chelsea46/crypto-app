@@ -5,7 +5,7 @@ export const Container = styled.div `
     margin: 0 auto;
     background-color:  ${(props) => props.theme.container.background};
 
-    .overview, .summary{
+    .overview, .summary, .stats{
         left: 68px;
         position: relative;
         top: 10px;
@@ -22,4 +22,13 @@ export const Container = styled.div `
         font-size: 1.4rem;
         font-weight: 500;
     }
+
+    .stats{
+        font-size: 1.4rem;
+        font-weight: 500;
+        left: 117px;
+        top: 0px;
+    }
+
+   
 `

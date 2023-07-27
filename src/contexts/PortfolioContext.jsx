@@ -19,8 +19,6 @@ function PorfolioContextProvider(props) {
   // state for search input
   const [searchInput, setSearchInput] = useState('');
   const [searchData, setSearchData] = useState([]);
-  // state for search coin
-  const [coin, setCoin] = useState('');
   // state for owned amount
   const [owned, setOwned] = useState([]);
   // state for date
@@ -33,6 +31,15 @@ function PorfolioContextProvider(props) {
 const [dropdownOpen, setdropDownOpen] = useState(false);
   
 
+    // function to fetch API data
+    async function fetchApiData() {
+    try {
+        const response = await axios.get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currencyApi}&order=market_cap_desc&per_page=100&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d`);
+        setSearchData(response.data);
+    } catch (error) {
+        console.error('Error fetching API data:', error);
+    }
+    }
 
   // function to handle search input
   function handleSearchInput(e) {
@@ -42,31 +49,12 @@ const [dropdownOpen, setdropDownOpen] = useState(false);
     setdropDownOpen(filteredSearch.length > 0);
   }
 
-  // function to fetch API data
-  async function fetchApiData() {
-    try {
-      const response = await axios.get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currencyApi}&order=market_cap_desc&per_page=100&page=1&sparkline=true&price_change_percentage=1h%2C24h%2C7d`);
-      setSearchData(response.data);
-    } catch (error) {
-      console.error('Error fetching API data:', error);
-    }
-  }
 
   // compare searchinput to api call to find selected coin
   function selectedCoin(e){
     setCoinSelected(e.target.innerText)
     setdropDownOpen(false)
   }
-
-  useEffect(() => {
-    if (searchInput) {
-      const findCoin = searchData.find((data) => data.id === searchInput);
-      if (findCoin) {
-        setCoin(findCoin);
-      }
-    }
-  }, [searchData]);
-
 
   //   function for owned input
   function ownedInput(e) {
@@ -88,8 +76,7 @@ function saveData(){
     }))
 }
 
-console.log(userCoinStats)
-  const value = { handleSearchInput, ownedInput, handleDate, fetchApiData, results, setResults, selectedCoin, saveData, dropdownOpen };
+  const value = { handleSearchInput, ownedInput, handleDate, fetchApiData, results, setResults, selectedCoin, saveData, dropdownOpen, userCoinStats, searchData};
 
   return (
     <PortfolioContext.Provider value={value}>

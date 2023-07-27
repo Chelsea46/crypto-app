@@ -91,7 +91,6 @@ const StyledAssetsModal = styled.div `
         border: none;
         font-size: 1em;
         border-radius: 10px;
-        width:80%;
     }
 
     .close, .save {

@@ -11,7 +11,8 @@ import { BsFilter } from "react-icons/bs";
 
 
 export default function CoinTable() {
-  const { coinTable, formatNumber, getTableData, hasMore } = useContext(CryptoContext);
+
+  const { coinTable, formatNumber, getTableData, hasMore, handleSort} = useContext(CryptoContext);
   
 
   return (
@@ -33,11 +34,11 @@ export default function CoinTable() {
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Name <BsFilter/> </th>
-                                <th>Price <BsFilter/> </th>
-                                <th>1h <BsFilter/> </th>
-                                <th>24h <BsFilter/> </th>
-                                <th>7d <BsFilter/> </th>
+                                <th className='sort-by' onClick={() => handleSort('id', 'asc')}>Name <BsFilter/> </th>
+                                <th className='sort-by' onClick={() => handleSort('price', 'asc')}>Price <BsFilter/> </th>
+                                <th className='sort-by' onClick={() => handleSort('1h', 'asc')}>1h <BsFilter/> </th>
+                                <th className='sort-by' onClick={() => handleSort('24h', 'asc')}>24h <BsFilter/> </th>
+                                <th className='sort-by' onClick={() => handleSort('7d', 'asc')}>7d <BsFilter/> </th>
                                 <th>24h Vol/Market Cap</th>
                                 <th>Circulating/Total Sup</th>
                                 <th>Last 7d</th>

@@ -46,6 +46,7 @@ const StyledCoinData = styled.div `
         .port-bar-container{
             display: flex;
             margin-left: 1em;
+            align-items: center;
         }
 
         .port-bar{

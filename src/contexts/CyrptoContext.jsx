@@ -26,24 +26,22 @@ function CryptoContextProvider(props) {
     const [searchParams, setSearchParams] = useSearchParams();
     const [filterOptions, setFilterOptions] = useState({ name: '', h1: '', h24: '', d7: '' });
     
-    // params function
+    // params sortBy function
     const handleSort = (filterKey, filterValue) => {
-      const updatedFilterOptions = { ...filterOptions, [filterKey]: filterValue };
-      setFilterOptions(updatedFilterOptions);
-  
-      if (filterKey === 'id') {
-        setSearchParams({ sortBy: 'id', sortByAsc: true });
-      } else if (filterKey === 'price'){
-        setSearchParams({ sortBy: 'current_price', sortByAsc: true });
-      }else if (filterKey === '1h'){
-        setSearchParams({ sortBy: 'price_change_percentage_1h_in_currency', sortByAsc: true });
-      }else if (filterKey === '24h'){
-        setSearchParams({ sortBy: 'price_change_percentage_24h_in_currency', sortByAsc: true });
-      }else if (filterKey === '7d'){
-        setSearchParams({ sortBy: 'price_change_percentage_7d_in_currency', sortByAsc: true });
-      }
+      // Determine if the current sorting key and order match the clicked column
+      const isFilterActiveAndAscending = searchParams.get('sortBy') === filterKey && searchParams.get('sortByAsc') === 'true';
+    
+      // Update the filter options based on the clicked column
+      setFilterOptions((prevFilterOptions) => ({ ...prevFilterOptions, [filterKey]: filterValue }));
+    
+      // Toggle the sorting order by changing it to the opposite of the current value
+      const ascDescToggle = isFilterActiveAndAscending ? 'false' : 'true';
+      
+      // Update the searchParams object with the new sorting key and order
+      setSearchParams({ sortBy: filterKey, sortByAsc: ascDescToggle });
     };
-  
+    
+   
     // lat and long
     useEffect(() => {
         const successCallback = async (position) => {

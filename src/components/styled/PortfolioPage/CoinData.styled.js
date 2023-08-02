@@ -16,6 +16,7 @@ const StyledCoinData = styled.div `
         justify-content: center;
         align-items: center;
         background-color: ${(props) => props.theme.body.background};
+        border-radius: 10px;
     }
 
     .left > img{
@@ -71,6 +72,23 @@ const StyledCoinData = styled.div `
 
         strong{
             margin-right: .3em;
+        }
+
+        .edit{
+            display: flex;
+            align-items: center;
+        }
+
+        .edit > p{
+            margin-right: 1em;
+        }
+
+        .pencil{
+            color: #d0ac57;
+        }
+
+        .pencil:hover{
+            color: grey;
         }
 `
 

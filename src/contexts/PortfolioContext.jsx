@@ -27,8 +27,13 @@ function PorfolioContextProvider(props) {
   const [coinSelected, setCoinSelected] = useState([]);
   // New state for matching search options
   const [results, setResults] = useState([]);
-//   state for dropdown
-const [dropdownOpen, setdropDownOpen] = useState(false);
+  //   state for dropdown
+  const [dropdownOpen, setdropDownOpen] = useState(false);
+   // state for edit details modal
+   const [editDetailsModal, setEditDetailsModal] = useState(false);
+  //  state for coin to be edited
+  const [coinToEdit, setCoinToEdit] = useState([])
+
   
 
     // function to fetch API data
@@ -76,7 +81,30 @@ function saveData(){
     }))
 }
 
-  const value = { handleSearchInput, ownedInput, handleDate, fetchApiData, results, setResults, selectedCoin, saveData, dropdownOpen, userCoinStats, searchData};
+// function to open edit form modal
+function openEditModal(coin){
+  setEditDetailsModal(true)
+  setCoinToEdit(coin)
+}
+
+  const value = { 
+    handleSearchInput, 
+    ownedInput, 
+    handleDate, 
+    fetchApiData, 
+    results, 
+    setResults, 
+    selectedCoin, 
+    saveData, 
+    dropdownOpen, 
+    userCoinStats, 
+    searchData, 
+    openEditModal,
+    editDetailsModal,
+    setEditDetailsModal,
+    coinToEdit,
+    setUserCoinStats
+  };
 
   return (
     <PortfolioContext.Provider value={value}>

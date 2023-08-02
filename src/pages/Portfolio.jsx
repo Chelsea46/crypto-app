@@ -5,12 +5,14 @@ import { PortfolioContext } from "../contexts/PortfolioContext";
 import { CoinData } from "../components/PortfolioPage/CoinData";
 import {Container} from '../components/styled/Container.styled'
 
+
 export default function Portfolio(){
 
     const {fetchApiData, setResults} = useContext(PortfolioContext)
 
     useEffect(() => {
         fetchApiData();
+        console.log('fetching API data')
       }, []);
       
     // modal state
@@ -21,6 +23,7 @@ export default function Portfolio(){
         setModalClosed(false);
         setResults([])
     }
+
 
     return (
         <>

@@ -83,4 +83,12 @@ export const StyledCoinTable = styled.div`
     .infinite-scroll-component__outerdiv{
         width: 90%;
     }
+
+    .sort-by{
+        cursor: pointer;
+    }
+
+    .sort-by:hover{
+        color: #707070;
+    }
 `

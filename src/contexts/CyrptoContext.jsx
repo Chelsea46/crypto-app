@@ -1,5 +1,5 @@
 import { useState, createContext, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 
 
@@ -22,6 +22,26 @@ function CryptoContextProvider(props) {
     // has more state
     const [hasMore, setHasMore] = useState(true)
 
+    // state for param filter
+    const [searchParams, setSearchParams] = useSearchParams();
+    const [filterOptions, setFilterOptions] = useState({ name: '', h1: '', h24: '', d7: '' });
+    
+    // params sortBy function
+    const handleSort = (filterKey, filterValue) => {
+      // Determine if the current sorting key and order match the clicked column
+      const isFilterActiveAndAscending = searchParams.get('sortBy') === filterKey && searchParams.get('sortByAsc') === 'true';
+    
+      // Update the filter options based on the clicked column
+      setFilterOptions((prevFilterOptions) => ({ ...prevFilterOptions, [filterKey]: filterValue }));
+    
+      // Toggle the sorting order by changing it to the opposite of the current value
+      const ascDescToggle = isFilterActiveAndAscending ? 'false' : 'true';
+      
+      // Update the searchParams object with the new sorting key and order
+      setSearchParams({ sortBy: filterKey, sortByAsc: ascDescToggle });
+    };
+    
+   
     // lat and long
     useEffect(() => {
         const successCallback = async (position) => {
@@ -60,13 +80,6 @@ function CryptoContextProvider(props) {
         setPage(page+1)
         setHasMore(response.data.length > 0)
     }
-  
-    // api call for table
-
-    // useEffect(() => {
-    //   getTableData()
-    // }, [country])
-
 
     // api call for the chart
     useEffect(() => {
@@ -116,7 +129,17 @@ function CryptoContextProvider(props) {
     }
 
     // values to pass to components
-    const value = { coinTable, coinChart, formatNumber, currencies, currencySelected, currencyApi, symbol, getTableData, hasMore };
+    const value = { 
+      coinTable, 
+      coinChart, 
+      formatNumber, 
+      currencies, 
+      currencySelected, 
+      currencyApi, 
+      symbol, 
+      getTableData, 
+      hasMore, 
+      handleSort };
 
     
     

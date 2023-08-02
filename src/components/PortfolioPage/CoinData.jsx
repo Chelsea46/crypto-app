@@ -2,60 +2,70 @@ import { useContext, useState, useEffect} from "react";
 import { PortfolioContext } from "../../contexts/PortfolioContext";
 import StyledCoinData from "../styled/PortfolioPage/CoinData.styled";
 import PortfolioBar from "../Bars/PorfolioBar";
-import { FaTrashCan } from  "react-icons/fa6";
+import { FaTrashCan, FaPencil } from  "react-icons/fa6";
 import { v4 as uuidv4 } from 'uuid';
+import { EditDetailsModal } from "./EditDetailsModal";
 
 export const CoinData = () => {
 
-    const {userCoinStats, searchData} = useContext(PortfolioContext);
+    const {userCoinStats, searchData, openEditModal, editDetailsModal, setUserCoinStats} = useContext(PortfolioContext);
     // state
-    const [coinDetailState, setCoinDetailState] = useState(() => {
-        const localStorageData = JSON.parse(localStorage.getItem("coinDetailState"));
-        return localStorageData || [];
-    });
+    const [coinDetailState, setCoinDetailState] = useState([]);
+    // state for localStorage
+    const [localStorageState, setLocalStorageState] = useState([]);
+
+    
+    // save to local storage
+    async function saveCoin(){
+        if(userCoinStats.name && searchData.length){
+            const coinDetails = searchData.find((coin) => {
+                if(coin.id == userCoinStats.name){
+                    coin.myamount = userCoinStats.amount;
+                    coin.purchaseDate = userCoinStats.date;
+                    coin.uniqueID = coinId;
+                }
+                return coin.id == userCoinStats.name;
+            })
+             setCoinDetailState((prevCoinDetailState) => [...prevCoinDetailState, coinDetails]);
+            localStorage.setItem("coinDetailState", JSON.stringify([...coinDetailState, coinDetails]));
+            setUserCoinStats({});
+        }
+    }
 
     // uniqueId
-    const uniqueId = uuidv4()
-    
-    
+    const coinId = uuidv4()
 
-    // save to local storage
-    async function getCoin(){
-            if(userCoinStats.name && searchData.length){
-                const coinDetails = searchData.find((coin) => {
-                    if(coin.id == userCoinStats.name){
-                        coin.myamount = userCoinStats.amount;
-                        coin.purchaseDate = userCoinStats.date;
-                    }
-                    return coin.id == userCoinStats.name;
-                })
-                setCoinDetailState([...coinDetailState, coinDetails]);
-            }
+    useEffect(() => {
+        if(!localStorageState.length){
+            let localStorageActivity = JSON.parse(localStorage.getItem("coinDetailState")) || [];
+            setLocalStorageState(localStorageActivity);
+            setCoinDetailState(localStorageActivity);
         }
+        // saveCoin();
+     }, [localStorageState]);
 
      useEffect(() => {
-         let localStorageActivity = JSON.parse(localStorage.getItem("coinDetailState")) || [];
-        setCoinDetailState(localStorageActivity);
-         getCoin();
+        saveCoin();
      }, [userCoinStats, searchData]);
         
-       
-    useEffect(() => {
-        localStorage.setItem("coinDetailState", JSON.stringify(coinDetailState));
-    }, [coinDetailState]);
-    
+     
     // remove coin
     const handleRemove = (coin) => {
-        setCoinDetailState((prevCoinDetailState) =>
-            prevCoinDetailState.filter((c) => c.id !== coin.id)
-        );
+        const updatedCoinDetailState = coinDetailState.filter((c) => c.uniqueID !== coin.uniqueID);
+
+        // Update the state to remove the coin
+        setCoinDetailState(updatedCoinDetailState);
+    
+        // Update localStorage with the updated coinDetailState by removing the 'coinDetailState' key
+        localStorage.removeItem("coinDetailState");
     };
-    
-    
+
+    console.log(coinDetailState)
+    console.log(localStorage.getItem('coinDetailState'))
     
   return (
     <StyledCoinData>
-    {coinDetailState.map((coin) => {
+    {coinDetailState && coinDetailState.map((coin) => {
 
       const currentPrice = parseFloat(coin.current_price) || 0;
 
@@ -67,7 +77,7 @@ export const CoinData = () => {
       const formattedPriceChange = currentPrice !== 0 ? priceChangeSincePurchase.toFixed(2) : 0;
         
         return(
-            <div className="coin-details-container" key={coin.id}>
+            <div className="coin-details-container" key={coin.uniqueID}>
                 <div className="left">
                     <img src={coin.image} alt=""/>
                     <h3>{coin.name}</h3>
@@ -90,7 +100,11 @@ export const CoinData = () => {
                                 <span><PortfolioBar progVal1={coin.circulating_supply} progVal2={coin.max_supply}/></span>
                             </span> 
                         </div>
-                        <p>Your Coin:</p>
+                        {editDetailsModal && <EditDetailsModal coinDetailState={coinDetailState} setCoinDetailState={setCoinDetailState}/>}
+                        <div className="edit">
+                            <p>Your Coin:</p>
+                            <span> <FaPencil className="pencil" onClick={() => openEditModal(coin.uniqueID)}/> </span>
+                        </div>
                         <div className="bottom-container">
                             <span> <strong>Amount: </strong>
                                 <span>{coin.myamount}</span>

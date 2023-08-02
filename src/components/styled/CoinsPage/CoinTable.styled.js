@@ -91,4 +91,32 @@ export const StyledCoinTable = styled.div`
     .sort-by:hover{
         color: #707070;
     }
+
+    .top {
+        --offset: 50px; 
+      
+        position: sticky;
+        bottom: 20px;       
+        margin-top: calc(100vh + var(--offset));
+        width: 46px;
+        aspect-ratio: 1;
+        background: #67D556;
+        border-radius: 10px;
+      }
+      
+      .top:before {
+        content: "";
+        position: absolute;
+        inset: 30%;
+        transform: translateY(20%) rotate(-45deg);
+        border-top: 5px solid #fff;
+        border-right: 5px solid #fff;
+      }
+
+      .container-top {
+        position: fixed;
+        bottom: 20px;
+        right: 1px;
+        transition: opacity 0.3s;
+      }
 `

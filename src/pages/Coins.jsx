@@ -1,3 +1,4 @@
+
 import CoinTable from "../components/CoinsPage/CoinTable";
 import CoinChart from "../components/CoinsPage/CoinChart";
 import VolumeChart from "../components/CoinsPage/VolumeChart";
@@ -13,6 +14,7 @@ export default function Coins() {
                 < VolumeChart />
             </ CoinChartsWrapper >
             < CoinTable />
+       
         </>
     );
 }

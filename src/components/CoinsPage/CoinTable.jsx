@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import queryString from 'query-string';
 import { CryptoContext } from '../../contexts/CyrptoContext';
@@ -14,6 +14,28 @@ import { BsFilter } from "react-icons/bs";
 export default function CoinTable() {
 
   const { coinTable, formatNumber, getTableData, hasMore, handleSort} = useContext(CryptoContext);
+// state for top button
+const [showTopButton, setShowTopButton] = useState(false);
+
+//   show to top button
+useEffect(() => {
+    // Function to check the scroll position and show/hide the top button accordingly
+    const handleScroll = () => {
+      if (window.scrollY > 200) {
+        setShowTopButton(true);
+      } else {
+        setShowTopButton(false);
+      }
+    };
+
+    // Attach the scroll event listener when the component mounts
+    window.addEventListener('scroll', handleScroll);
+
+    // Clean up the scroll event listener when the component unmounts
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
   
 //   sorting table on ascending or descending order
   const parsed = queryString.parse(location.search);
@@ -121,6 +143,12 @@ export default function CoinTable() {
                 </tbody>
             </table>
                 </InfiniteScroll>
+                <div className="container-top">
+        {showTopButton && (
+          <button className="top" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+          </button>
+        )}
+      </div>
     </StyledCoinTable>
   );
 }

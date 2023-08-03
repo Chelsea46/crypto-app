@@ -18,8 +18,6 @@ const StyledAssetsModal = styled.div `
         padding: 20px;
         background-color: ${(props) => props.theme.active_coin_portfolio.background};
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-        height: 300px;
-        width: 550px;
     }
 
     .title{
@@ -43,6 +41,7 @@ const StyledAssetsModal = styled.div `
         width: 200px;
         border-radius: 10px;
         background-color: ${(props) => props.theme.body.background};
+        margin-right: 1em;
     }
 
     ol > li{
@@ -141,6 +140,44 @@ const StyledAssetsModal = styled.div `
         width: 300px;
       }
       
+      @media (max-width: 400px){
+
+        .modal-container{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .modal-options{
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .close, .save {
+            font-weight: 700;
+            padding: 5px 10px;
+            margin-bottom: 10px;
+            border-radius: 12px;
+        }
+
+        .left{
+            margin-left: 0em;
+            margin-bottom: 1em;
+            width: 100%;
+        }
+
+        .left > ol > li{
+            line-height: 10px;
+        }
+
+        .right > input, .search-bar > input{
+            font-size: .80rem;
+        }
+        
+       .title{
+        font-size: .80rem;
+       }
+    }
 `
 
 export default StyledAssetsModal

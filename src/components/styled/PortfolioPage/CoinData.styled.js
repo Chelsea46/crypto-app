@@ -7,6 +7,7 @@ const StyledCoinData = styled.div `
         justify-content: space-evenly;
         margin-bottom: 3em;
         padding-bottom: 2em;
+        border-bottom: 1px solid gray;
     }
 
     .left{
@@ -29,7 +30,6 @@ const StyledCoinData = styled.div `
         display: flex;
         background-color: ${(props) => props.theme.body.background};
         align-items: center;
-        width: 95%;
         border-radius: 20px;
         justify-content: space-between;
         font-size: .75em;
@@ -89,6 +89,40 @@ const StyledCoinData = styled.div `
 
         .pencil:hover{
             color: grey;
+        }
+
+        @media (max-width: 400px){
+
+            .coin-details-container{
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .left{
+                width: 50%;
+            }
+
+            .left >img{
+                width: 25%;
+                margin-top: 1em;
+            }
+
+            .left > h3{
+                font-size: .80rem;
+            }
+
+            .remove{
+                font-size: .90rem;
+            }
+
+            .top-container, .bottom-container{
+                flex-direction: column;
+                line-height: 1.6em;
+            }
+
+            .right{
+                width: 98%;
+            }
         }
 `
 

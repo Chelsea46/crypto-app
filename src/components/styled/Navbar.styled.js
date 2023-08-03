@@ -80,4 +80,43 @@ export const StyledNav = styled.nav `
         border-radius: 50%;
         color: rgb(0, 255, 95);
     }
+
+    @media (max-width: 400px){
+
+        justify-content: space-between;
+
+        .coins, .portfolio, {
+            padding: .7em;
+            font-size: .85rem;
+        }
+
+        
+
+        .search-bar{
+            display: none;
+            font-size: .85rem;
+        }
+
+        .select-container{
+            padding: .3em;
+            font-size: .85rem;
+            margin-left: .5em;
+        }
+
+        .symbol{
+            width: 18px;
+            height: 18px;
+        }
+
+        .nav-dropdown, .toggle{
+            font-size: .8rem;
+        }
+
+        .toggle-mode{
+            padding: .5em;
+        }
+
+
+    }
+
 `

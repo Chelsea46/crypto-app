@@ -24,4 +24,17 @@ export const CoinLinkStlye = styled.div`
         padding: .5em;
         background:  ${(props) => props.theme.active_coin_portfolio.background};
     }
+
+    @media (max-width: 400px){
+        width: 50%;
+
+        h3{
+            font-size: .80rem;
+        }
+
+        a{
+            font-size: .70rem;
+            font-weight: normal;
+        }
+    }
 `

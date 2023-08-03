@@ -60,19 +60,14 @@ export default function MarketData(){
                 <div className="data-container">
                     <ul>
                         <li>
-                            <span>Coins:</span>{markData.data.active_cryptocurrencies}
+                            <span><strong>Coins:</strong></span>{markData.data.active_cryptocurrencies}
                         </li>
                         <li>
-                            <span>Exchange:</span>{markData.data.markets}
+                            <span><strong>Exchange:</strong></span>{markData.data.markets}
                         </li>
                         <li>
-                            <span>$</span>{formatNumber(markData.data.market_cap_change_percentage_24h_usd)}
+                            <span><strong>$</strong></span>{formatNumber(markData.data.market_cap_change_percentage_24h_usd)}
                         </li>
-                        {/* <li>
-                            <span>${markData.data.total_volume.btc * 100 / markData.data.total_volume.eth}</span>
-                            <DataBar 
-                            progVal1={markData.data.total_volume.btc} progVal2={markData.data.total_market_cap.btc} />
-                        </li> */}
                         <li className="prog-bar-container">
                             <img src={btcImg} alt="" className="btc-img"/>
                             <span>{markData.data.market_cap_percentage.btc.toFixed(2)}%</span>

@@ -37,4 +37,17 @@ export const BouncingLoaderStyle = styled.div `
   .bouncing-loader > div:nth-child(3) {
     animation-delay: 0.4s;
   }
+
+  @media (max-width: 400px){
+    
+    .bouncing-loader{
+      height: 59px;
+    }
+
+    .bouncing-loader > div{
+      width: 8px;
+      height: 8px;
+      margin: 2px 6px;
+    }
+  }
 `

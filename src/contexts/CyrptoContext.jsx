@@ -20,26 +20,11 @@ function CryptoContextProvider(props) {
     // page state
     const [page, setPage] = useState(1);
     // has more state
-    const [hasMore, setHasMore] = useState(true)
+    const [hasMore, setHasMore] = useState(true);
+    // state for search
+    const [searchInput, setSearchInput] = useState([]);
 
-    // state for param filter
-    const [searchParams, setSearchParams] = useSearchParams();
-    const [filterOptions, setFilterOptions] = useState({ name: '', h1: '', h24: '', d7: '' });
     
-    // params sortBy function
-    const handleSort = (filterKey, filterValue) => {
-      // Determine if the current sorting key and order match the clicked column
-      const isFilterActiveAndAscending = searchParams.get('sortBy') === filterKey && searchParams.get('sortByAsc') === 'true';
-    
-      // Update the filter options based on the clicked column
-      setFilterOptions((prevFilterOptions) => ({ ...prevFilterOptions, [filterKey]: filterValue }));
-    
-      // Toggle the sorting order by changing it to the opposite of the current value
-      const ascDescToggle = isFilterActiveAndAscending ? 'false' : 'true';
-      
-      // Update the searchParams object with the new sorting key and order
-      setSearchParams({ sortBy: filterKey, sortByAsc: ascDescToggle });
-    };
     
    
     // lat and long
@@ -72,6 +57,11 @@ function CryptoContextProvider(props) {
         break;
       }
     }, [country])
+
+    // handle search
+    function handleSearch(e){
+      setSearchInput(e.target.value)
+    }
 
     async function getTableData(){
       const response = await axios.get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currencyApi}&order=market_cap_desc&per_page=30&page=${page}&sparkline=true&price_change_percentage=1h%2C24h%2C7d`)
@@ -139,7 +129,8 @@ function CryptoContextProvider(props) {
       symbol, 
       getTableData, 
       hasMore, 
-      handleSort };
+      handleSearch
+    };
 
     
     

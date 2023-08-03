@@ -35,4 +35,18 @@ export const CoinDescStyle = styled.div`
         margin-bottom: .55em;
     }
    
+    @media (max-width: 400px){
+        
+        line-height: 1.7em;
+        font-size: .90rem;
+
+        .stack{
+            font-size: 1.5em;
+        }
+
+        .description-title{
+            margin-left: 1em;
+            font-size: 1rem;
+        }
+    }
     `

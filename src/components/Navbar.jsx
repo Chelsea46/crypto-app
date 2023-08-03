@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 
 export default function Navbar({onClick, theme}){
-    const { currencies, currencySelected, symbol } = useContext(CryptoContext);
+    const { currencies, currencySelected, symbol, handleSearch } = useContext(CryptoContext);
     
     return(
         <StyledNav theme={theme}>
@@ -17,7 +17,7 @@ export default function Navbar({onClick, theme}){
             < div className="right-nav">
                     <form action="">
                         {/* <FaSearchengin className="search-icon"/> */}
-                        <input type="text" name="" id="" placeholder = "Search..." className="search-bar"/>
+                        <input type="text" name="" id="" placeholder = "Search..." className="search-bar" onChange={handleSearch}/>
                     </form>
                     <div className="select-container">
                         <div className="symbol">

@@ -21,6 +21,15 @@ const AssetsButtonStyled = styled.div `
         background-color: ${(props) => props.theme.body.background};
     }
 
+    @media (max-width: 400px){
+
+        height: 100px;
+
+        button{
+            padding: .5em 1.5em;
+            font-size: .80rem;
+        }
+    }
 `
 
 export default AssetsButtonStyled

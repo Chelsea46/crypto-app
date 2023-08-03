@@ -29,6 +29,20 @@ export const Container = styled.div `
         left: 117px;
         top: 0px;
     }
-
    
+    @media (max-width: 400px){
+        width: 90vw;
+
+        .overview, .summary, .stats{
+            left: 20px;
+            position: relative;
+            top: 0px;
+            font-size: 1rem;
+        }
+
+        .coin-wrapper{
+            flex-direction: column;
+            align-items: center;
+        }
+    }
 `

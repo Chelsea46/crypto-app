@@ -39,4 +39,27 @@ export const StyledMarketData = styled.div `
     span{
         margin-right: .5em;
     }
+
+    @media (max-width: 400px){
+
+        font-size: .60rem;
+
+        .data-container{
+            width: 85%;
+        }
+
+        .prog-bar{
+            width: 30px;
+        }
+
+        .prog-bar-container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .prog-bar-container > span{
+            display: none;
+        }
+    }
 `

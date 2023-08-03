@@ -119,4 +119,11 @@ export const StyledCoinTable = styled.div`
         right: 1px;
         transition: opacity 0.3s;
       }
+
+      @media (max-width: 400px){
+
+        .top{
+            width: 30px;
+        }
+      }
 `

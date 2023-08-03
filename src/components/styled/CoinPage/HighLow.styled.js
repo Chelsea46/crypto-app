@@ -56,4 +56,10 @@ export const HighLowStlye = styled.div`
         margin-top: .5em;
        
     }
+
+    @media (max-width: 400px){
+        width: 270px;
+        margin-left: 0px;
+        font-size: .80rem;
+    }
 `

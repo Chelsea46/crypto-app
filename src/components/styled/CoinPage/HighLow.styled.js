@@ -61,5 +61,7 @@ export const HighLowStlye = styled.div`
         width: 270px;
         margin-left: 0px;
         font-size: .80rem;
+
+
     }
 `

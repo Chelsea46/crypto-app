@@ -1,24 +1,27 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { PortfolioContext } from "../../contexts/PortfolioContext";
 import StyledAssetsModal from "../styled/PortfolioPage/AssetsModal.styled"
-import { FaSearchDollar } from "react-icons/fa";
 import moment from "moment";
 
 export default function AssetsModal({ setModalClosed }) {
 
     // states from context
-    const { saveData, handleSearchInput, ownedInput, handleDate, results, selectedCoin, dropdownOpen } = useContext(PortfolioContext);
+    const { saveData, handleSearchInput, ownedInput, handleDate, results, selectedCoin, dropdownOpen, coinSelected,  setCoinSelected} = useContext(PortfolioContext);
 
+    const [coinInput, setCoinInput] = useState([]);
     // function to close modal
     function close() {
         setModalClosed(true);
+        setCoinSelected('');
     }
 
     // function to save and close
     function saveAndClose(){
-        saveData()
-        close()
+        saveData();
+        close();
+        setCoinSelected('');
     }
+
 
     // current date
     const currentDate = moment().format("YYYY-MM-DD");
@@ -39,7 +42,7 @@ export default function AssetsModal({ setModalClosed }) {
             </div>
             <div className="right">
                 <div className="search-bar">
-                <input type="text" placeholder="Coin Name..." onChange={handleSearchInput} />
+                <input type="text" placeholder="Coin Name..." value={coinSelected} onChange={handleSearchInput} />
                 </div>
                 {dropdownOpen&& <div className="dropdown">
                     {results.map((result) => {

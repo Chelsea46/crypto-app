@@ -12,7 +12,6 @@ export default function Portfolio(){
 
     useEffect(() => {
         fetchApiData();
-        console.log('fetching API data')
       }, []);
       
     // modal state

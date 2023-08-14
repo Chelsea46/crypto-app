@@ -42,7 +42,7 @@ export const CoinData = () => {
             setCoinDetailState(localStorageActivity);
         }
         // saveCoin();
-     }, [localStorageState]);
+     }, []);
 
      useEffect(() => {
         saveCoin();
@@ -59,9 +59,6 @@ export const CoinData = () => {
         // Update localStorage with the updated coinDetailState by removing the 'coinDetailState' key
         localStorage.removeItem("coinDetailState");
     };
-
-    console.log(coinDetailState)
-    console.log(localStorage.getItem('coinDetailState'))
     
   return (
     <StyledCoinData>

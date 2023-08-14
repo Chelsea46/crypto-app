@@ -14,7 +14,7 @@ import { BsFilter } from "react-icons/bs";
 
 export default function CoinTable() {
 
-  const { coinTable, formatNumber, getTableData, hasMore, searchInput} = useContext(CryptoContext);
+  const { coinTable, formatNumber, getTableData, hasMore, searchInput, filteredSearch, clearSearch} = useContext(CryptoContext);
 // state for top button
 const [showTopButton, setShowTopButton] = useState(false);
 // state for param filter
@@ -46,9 +46,9 @@ const [sortState, setSortState] = useState({
     // params sortBy function
     const handleSort = (filterKey) => {
        // current sorting key and order match the clicked column
-       const isFilterActiveAndAscending = sortState.sortBy === filterKey && sortState.sortByAsc;
+    //    const isFilterActiveAndAscending = sortState.sortBy === filterKey && sortState.sortByAsc;
        // toggle by asc or desc
-       const newSortByAsc = isFilterActiveAndAscending ? !sortState.sortByAsc : true;
+       const newSortByAsc =  !sortState.sortByAsc;
        // update sortState object with the new sorting key and order
        setSortState({ sortBy: filterKey, sortByAsc: newSortByAsc });
    
@@ -91,15 +91,6 @@ const [sortState, setSortState] = useState({
         }
     }, [parsed, coinTable]);
 
-//   serach bar
-    useEffect(() => {
-        const filteredCoin = coinTable.filter((coin) => {
-            if(coin.id.includes(searchInput)){
-                return coin
-            }
-        })
-    },[searchInput])
-
   return (
     <StyledCoinTable>
                 <InfiniteScroll
@@ -128,12 +119,12 @@ const [sortState, setSortState] = useState({
                             </tr>
                         </thead>
                     <tbody>
-                    {coinTable.map((coin, index) => (
+                    {filteredSearch.length > 0 && filteredSearch.map((coin, index) => (
                     <tr key={coin.id} >
                         <td>{index+1}</td>
                     
                         <td>
-                        <div className="coin-name">
+                        <div className="coin-name" onClick={clearSearch}>
                            <Link to={`/coin/${coin.id}`}>
                                 <img src={coin.image} alt={coin.name} className="coin-table-img" />
                                 <span>{coin.name}</span>

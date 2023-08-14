@@ -24,7 +24,7 @@ function PorfolioContextProvider(props) {
   // state for date
   const [dateCreated, setDateCreated] = useState([]);
   //   state for selected coin
-  const [coinSelected, setCoinSelected] = useState([]);
+  const [coinSelected, setCoinSelected] = useState('');
   // New state for matching search options
   const [results, setResults] = useState([]);
   //   state for dropdown
@@ -45,21 +45,22 @@ function PorfolioContextProvider(props) {
         console.error('Error fetching API data:', error);
     }
     }
-
-  // function to handle search input
-  function handleSearchInput(e) {
-    setSearchInput(e.target.value);
-    const filteredSearch = searchData.filter((data) => data.id.includes(searchInput.toLowerCase()));
-    setResults(filteredSearch)
-    setdropDownOpen(filteredSearch.length > 0);
-  }
-
-
-  // compare searchinput to api call to find selected coin
-  function selectedCoin(e){
-    setCoinSelected(e.target.innerText)
-    setdropDownOpen(false)
-  }
+    
+    // function to handle search input
+    function handleSearchInput(e) {
+      setSearchInput(e.target.value);
+      const filteredSearch = searchData.filter((data) => data.id.includes(searchInput.toLowerCase()));
+      setResults(filteredSearch)
+      setdropDownOpen(filteredSearch.length > 0);
+    }
+    
+    
+    // compare searchinput to api call to find selected coin
+    function selectedCoin(e){
+      setCoinSelected(e.target.innerText)
+      setdropDownOpen(false)
+    }
+    
 
   //   function for owned input
   function ownedInput(e) {
@@ -87,6 +88,7 @@ function openEditModal(coin){
   setCoinToEdit(coin)
 }
 
+
   const value = { 
     handleSearchInput, 
     ownedInput, 
@@ -103,7 +105,9 @@ function openEditModal(coin){
     editDetailsModal,
     setEditDetailsModal,
     coinToEdit,
-    setUserCoinStats
+    setUserCoinStats,
+    coinSelected,
+    setCoinSelected
   };
 
   return (

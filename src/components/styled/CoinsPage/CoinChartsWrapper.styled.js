@@ -9,8 +9,7 @@ export const CoinChartsWrapper = styled.div`
     padding-right: 4em;
     margin-bottom: 1em;
 
-    @media (max-width: 400px){
-
+    @media (max-width: 480px){
         padding-left: 0em;
         padding-right: 0em;
         margin-bottom: 1em;
@@ -20,9 +19,21 @@ export const CoinChartsWrapper = styled.div`
         h1{
             font-size: .80rem;
         }
-
         p{
             font-size: .90rem;
+        }
+    }
+
+    @media (min-width: 481px) and (max-width: 768px){
+        padding-left: 0em;
+        padding-right: 0em;
+        margin: 2rem 1rem 1rem 1rem;
+
+        h1{
+            font-size: .85rem;
+        }
+        p{
+            font-size: .95rem;
         }
     }
 `

@@ -81,7 +81,7 @@ export const StyledNav = styled.nav `
         color: rgb(0, 255, 95);
     }
 
-    @media (max-width: 400px){
+    @media (max-width: 480px){
 
         justify-content: space-between;
 
@@ -89,8 +89,6 @@ export const StyledNav = styled.nav `
             padding: .7em;
             font-size: .85rem;
         }
-
-        
 
         .search-bar{
             display: none;
@@ -115,8 +113,43 @@ export const StyledNav = styled.nav `
         .toggle-mode{
             padding: .5em;
         }
-
-
     }
+
+    @media (min-width: 481px) and (max-width: 768px){
+        justify-content: space-evenly;
+
+        .coins, .portfolio, {
+            padding: .7em;
+            font-size: .95rem;
+        }
+
+        .search-bar{
+            display: none;
+            font-size: .95rem;
+        }
+
+        .select-container{
+            padding: .3em;
+            font-size: .95rem;
+            margin-left: .5em;
+        }
+
+        .symbol{
+            width: 18px;
+            height: 18px;
+        }
+
+        .nav-dropdown, .toggle{
+            font-size: .95rem;
+        }
+
+        .toggle-mode{
+            padding: .5em;
+        }
+
+        .right-nav{
+            width: 20%;
+        }
+      }
 
 `

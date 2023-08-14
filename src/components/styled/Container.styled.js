@@ -30,7 +30,7 @@ export const Container = styled.div `
         top: 0px;
     }
    
-    @media (max-width: 400px){
+    @media (max-width: 480px){
         width: 90vw;
 
         .overview, .summary, .stats{
@@ -45,4 +45,20 @@ export const Container = styled.div `
             align-items: center;
         }
     }
+
+    @media (min-width: 481px) and (max-width: 768px){
+        width: 90vw;
+
+        .overview, .summary, .stats{
+            left: 20px;
+            position: relative;
+            top: 10px;
+            font-size: 1rem;
+        }
+
+        .coin-wrapper{
+            flex-direction: column;
+            align-items: center;
+        }
+      }
 `

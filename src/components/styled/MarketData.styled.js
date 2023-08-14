@@ -40,8 +40,7 @@ export const StyledMarketData = styled.div `
         margin-right: .5em;
     }
 
-    @media (max-width: 400px){
-
+    @media (max-width: 480px){
         font-size: .60rem;
 
         .data-container{
@@ -62,4 +61,26 @@ export const StyledMarketData = styled.div `
             display: none;
         }
     }
+
+    @media (min-width: 481px) and (max-width: 768px){
+        font-size: .75rem;
+
+        .data-container{
+            width: 85%;
+        }
+
+        .prog-bar{
+            width: 30px;
+        }
+
+        .prog-bar-container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .prog-bar-container > span{
+            display: none;
+        }
+      }
 `

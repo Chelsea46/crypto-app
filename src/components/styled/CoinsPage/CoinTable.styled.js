@@ -120,8 +120,14 @@ export const StyledCoinTable = styled.div`
         transition: opacity 0.3s;
       }
 
-      @media (max-width: 400px){
+      @media (max-width: 480px){
 
+        .top{
+            width: 30px;
+        }
+      }
+
+      @media (min-width: 481px) and (max-width: 768px){
         .top{
             width: 30px;
         }

@@ -25,7 +25,20 @@ export const CoinLinkStlye = styled.div`
         background:  ${(props) => props.theme.active_coin_portfolio.background};
     }
 
-    @media (max-width: 400px){
+    @media (max-width: 480px){
+        width: 50%;
+
+        h3{
+            font-size: .80rem;
+        }
+
+        a{
+            font-size: .70rem;
+            font-weight: normal;
+        }
+    }
+
+    @media (min-width: 481px) and (max-width: 768px){
         width: 50%;
 
         h3{

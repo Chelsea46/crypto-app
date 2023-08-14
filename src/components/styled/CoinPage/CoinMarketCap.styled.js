@@ -52,7 +52,14 @@ export const CoinMarketCapStlye = styled.div`
         margin-right: .5em;
     }
 
-    @media (max-width: 400px){
+    @media (max-width: 480px){
+        width: 292px;
+        margin-left: 0px;
+        font-size: .80rem;
+        padding-top: 1em;
+    }
+
+    @media (min-width: 481px) and (max-width: 768px){
         width: 292px;
         margin-left: 0px;
         font-size: .80rem;

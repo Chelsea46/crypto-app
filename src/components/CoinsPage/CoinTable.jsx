@@ -51,7 +51,6 @@ const [sortState, setSortState] = useState({
        const newSortByAsc =  !sortState.sortByAsc;
        // update sortState object with the new sorting key and order
        setSortState({ sortBy: filterKey, sortByAsc: newSortByAsc });
-   
        // update searchParams object with new parameters
        setSearchParams({ sortBy: filterKey, sortByAsc: newSortByAsc.toString() });
      };

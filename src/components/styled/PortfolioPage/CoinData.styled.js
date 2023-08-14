@@ -91,7 +91,7 @@ const StyledCoinData = styled.div `
             color: grey;
         }
 
-        @media (max-width: 400px){
+        @media (max-width: 480px){
 
             .coin-details-container{
                 flex-direction: column;
@@ -124,6 +124,40 @@ const StyledCoinData = styled.div `
                 width: 98%;
             }
         }
+
+        @media (min-width: 481px) and (max-width: 768px){
+            .coin-details-container{
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .left{
+                width: 50%;
+            }
+
+            .left >img{
+                width: 25%;
+                margin-top: 1em;
+            }
+
+            .left > h3{
+                font-size: .80rem;
+            }
+
+            .remove{
+                font-size: .90rem;
+            }
+
+            .top-container, .bottom-container{
+                flex-direction: column;
+                line-height: 1.6em;
+            }
+
+            .right{
+                width: 98%;
+            }
+        }
+
 `
 
 export default StyledCoinData

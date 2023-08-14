@@ -100,8 +100,55 @@ ol{
     justify-content: center;
 }
 
-@media (max-width: 400px){
+@media (max-width: 480px){
 
+    .modal-container{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 300px;
+        height: 330px;
+    }
+
+    .modal-options{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .close, .save {
+        font-weight: 700;
+        padding: 5px 10px;
+        margin-bottom: 10px;
+        border-radius: 12px;
+    }
+
+    .left{
+        margin-left: 0em;
+        margin-bottom: 1em;
+    }
+
+    .right{
+        height: 100px;
+    }
+
+    .left > ol > li{
+        line-height: 10px;
+    }
+
+    .right > input, .search-bar > input{
+        font-size: .80rem;
+    }
+    
+   .title{
+    font-size: .80rem;
+   }
+
+   .btn-containe{
+    margin-top: 0em;
+   }
+}
+
+@media (min-width: 481px) and (max-width: 768px){
     .modal-container{
         display: flex;
         align-items: center;

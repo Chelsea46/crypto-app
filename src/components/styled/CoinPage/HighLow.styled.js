@@ -57,11 +57,15 @@ export const HighLowStlye = styled.div`
        
     }
 
-    @media (max-width: 400px){
+    @media (max-width: 480px){
         width: 270px;
         margin-left: 0px;
         font-size: .80rem;
+    }
 
-
+    @media (min-width: 481px) and (max-width: 768px){
+        width: 270px;
+        margin-left: 0px;
+        font-size: .80rem;
     }
 `

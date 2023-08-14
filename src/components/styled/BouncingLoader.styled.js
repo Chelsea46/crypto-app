@@ -38,8 +38,21 @@ export const BouncingLoaderStyle = styled.div `
     animation-delay: 0.4s;
   }
 
-  @media (max-width: 400px){
+  @media (max-width: 480px){
     
+    .bouncing-loader{
+      height: 59px;
+    }
+
+    .bouncing-loader > div{
+      width: 8px;
+      height: 8px;
+      margin: 2px 6px;
+    }
+  }
+
+  @media (min-width: 481px) and (max-width: 768px){
+      
     .bouncing-loader{
       height: 59px;
     }

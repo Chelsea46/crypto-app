@@ -103,7 +103,7 @@ function CryptoContextProvider(props) {
     
     //  function for currency selection
     function currencySelected(e) {
-      const selectedCurrency = e.target.value;
+      const selectedCurrency = e.target.value.toLowerCase();
       setCurrencyApi(selectedCurrency);
       
       switch (selectedCurrency) {

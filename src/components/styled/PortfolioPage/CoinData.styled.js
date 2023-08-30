@@ -35,6 +35,7 @@ const StyledCoinData = styled.div `
         font-size: .75em;
         margin-bottom: 2em;
         padding: 2em 3em 2em 3em;
+        width: 100%;
     }
 
     

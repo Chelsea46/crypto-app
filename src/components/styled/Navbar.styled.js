@@ -44,7 +44,7 @@ export const StyledNav = styled.nav `
 
     .search-bar{
         width: 61%;
-        font-size: 1.5rem;
+        font-size: 1.3rem;
         padding: .3em .75em .3em .75em;
     }
 
@@ -53,7 +53,7 @@ export const StyledNav = styled.nav `
     }
 
     .select-container{
-        padding: 1em;
+        padding: .65em;
         display: flex;
         flex-direction: row;
         font-weight: bold;

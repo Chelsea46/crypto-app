@@ -81,6 +81,17 @@ export const StyledNav = styled.nav `
         color: rgb(0, 255, 95);
     }
 
+    .login-register{
+        display: flex;
+        justify-content: space-between;
+        width: 145px;
+    }
+
+    .login:hover, .register:hover{
+        color: #6C7575;
+        cursor: pointer;
+    }
+
     @media (max-width: 480px){
 
         justify-content: space-between;

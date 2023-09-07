@@ -15,18 +15,26 @@ import {Overview} from './components/styled/Overview.styled'
 
 function App() {
   const [isDarkTheme, setIsDarkTheme] = useState(true);
+  const [regModalClosed, setRegModalClosed] = useState(true);
+  const [loginModalClosed, setLoginModalClosed] = useState(true);
 
   const getCurrentTheme = () => (isDarkTheme ? themes.dark : themes.light);
 
   const toggleTheme = () => setIsDarkTheme(!isDarkTheme);
+
+  function close() {
+    setRegModalClosed(true);
+    setLoginModalClosed(true);
+}
+
  return(
     <ThemeProvider theme={getCurrentTheme()}>
       <Container>
         <GlobalStyles theme={getCurrentTheme()} />
-        <Navbar onClick={toggleTheme} theme={getCurrentTheme()} />
+        <Navbar onClick={toggleTheme} theme={getCurrentTheme()} regModalClosed ={setRegModalClosed} loginModalClosed={setLoginModalClosed}/>
         <MarketData />
         <Routes>
-          <Route path='/' element={ < Coins /> }/>
+          <Route path='/' element={ < Coins regModalClosed={regModalClosed} close={close} loginModalClosed={loginModalClosed}/> }/>
           <Route path='/portfolio' element={ < Portfolio /> }/>
           <Route path='/coin/:id' element={ < Coin /> }/>
         </Routes>

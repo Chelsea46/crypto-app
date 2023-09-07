@@ -4,6 +4,7 @@ import App from './App.jsx'
 import { BrowserRouter } from "react-router-dom";
 import CryptoContextProvider from './contexts/CyrptoContext.jsx';
 import PorfolioContextProvider from './contexts/PortfolioContext.jsx'
+import UserContextProvider, { UserContext } from './contexts/UserContext.jsx';
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -11,7 +12,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
       <CryptoContextProvider>
         <PorfolioContextProvider>
-          <App />
+          <UserContextProvider>
+            <App />
+          </UserContextProvider>
         </PorfolioContextProvider>
       </CryptoContextProvider>
     </React.StrictMode>

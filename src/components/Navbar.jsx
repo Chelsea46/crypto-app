@@ -35,10 +35,6 @@ export default function Navbar({onClick, theme, regModalClosed, loginModalClosed
                         {/* <FaSearchengin className="search-icon"/> */}
                         <input type="text" name="" id="" placeholder = "Search..." className="search-bar" value={searchInput} onChange={handleSearch}/>
                     </form>
-                    <div className="login-register">
-                        <p className="login" onClick={addLoginModal}>Login</p> 
-                        <p className="register" onClick={addRegModal}>Register</p>
-                    </div>
                     <div className="select-container">
                         <div className="symbol">
                             <span>{symbol}</span>
@@ -52,6 +48,10 @@ export default function Navbar({onClick, theme, regModalClosed, loginModalClosed
                                 )
                             })};
                         </select>
+                    </div>
+                    <div className="login-register">
+                        <p className="login" onClick={addLoginModal}>Login</p> 
+                        <p className="register" onClick={addRegModal}>Sign up</p>
                     </div>
                 <div className="toggle-mode" onClick={onClick}><FaCircleHalfStroke className="toggle"/></div>
             </div>

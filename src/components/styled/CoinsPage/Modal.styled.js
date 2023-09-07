@@ -87,4 +87,45 @@ button:hover{
     margin-top: -5px;
 }
 
+@media (max-width: 480px){
+
+    .login-modal{
+        width: 65%;
+        height: 250px;
+    }
+
+    .register-modal{
+        width: 65%;
+        height: 320px;
+    }
+    
+   .title{
+    font-size: .70rem;
+   }
+
+   .close-button{
+    font-size: .85rem;
+   }
+
+   .submit-btn{
+    padding: .65em;
+    width: 50%;
+    color: white;
+    font-size: .80rem;
+   }
+
+   form > input{
+    margin-bottom: 1.2em;
+    padding: .55em;
+    }
+
+    form > label{
+        font-size: .80rem;
+    }
+}
+
+@media (min-width: 481px)and (max-width: 768px){
+    
+}
+
 `

@@ -85,6 +85,7 @@ export const StyledNav = styled.nav `
         display: flex;
         justify-content: space-between;
         width: 145px;
+        margin-left: 1em;
     }
 
     .login:hover, .register:hover{
@@ -124,6 +125,15 @@ export const StyledNav = styled.nav `
         .toggle-mode{
             padding: .5em;
         }
+
+        .login-register{
+            font-size: .65rem;
+            margin-left: 0.5em;
+        }
+
+        .right-nav{
+            width: 61%;
+        }
     }
 
     @media (min-width: 481px) and (max-width: 768px){
@@ -158,8 +168,13 @@ export const StyledNav = styled.nav `
             padding: .5em;
         }
 
+        .login-register{
+            font-size: .70rem;
+            margin-left: 0.5em;
+        }
+
         .right-nav{
-            width: 20%;
+            width: 50%;
         }
       }
 

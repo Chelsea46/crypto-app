@@ -4,6 +4,7 @@ import { StyledModal } from "../styled/CoinsPage/Modal.styled";
 
 export default function RegisterModal({close}){
 
+    const{ handleRegisterFormChange, handleRegistrationSubmit} = useContext(UserContext)
 
     
     return(
@@ -15,15 +16,15 @@ export default function RegisterModal({close}){
             <div className="title">
                 <h2>Sign Up</h2>
             </div>
-            <form action="submit" method="POST">
+            <form action="submit" onSubmit={handleRegistrationSubmit} method="POST">
                 <label htmlFor="name">User name</label>
-                <input required type="text" id="name" name="name"/>
+                <input required type="text" id="name" name="name" onChange={ handleRegisterFormChange}/>
                 <label htmlFor="email">Email</label>
-                <input required type="email" name="email" id="email"></input>
+                <input required type="email" name="email" id="email" onChange={ handleRegisterFormChange}></input>
                 <label htmlFor="password"> Password </label>
-                <input required type="password" name="password" id="password"></input>
+                <input required type="password" name="password" id="password" onChange={ handleRegisterFormChange}></input>
                 <div className="button">
-                    <button className="submit-btn"type="submit">Sign up now</button>
+                    <button className="submit-btn"type="submit" onClick={handleRegistrationSubmit}>Sign up now</button>
                     
                 </div>
             </form>

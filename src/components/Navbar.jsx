@@ -19,10 +19,10 @@ export default function Navbar({onClick, theme, regModalClosed, loginModalClosed
         loginModalClosed(false);
     }
 
-    useEffect(() => {
-        axios.get('http://localhost/crypto-login')
-        .then(res => console.log(res))
-    }, [])
+    // useEffect(() => {
+    //     axios.get('http://localhost/crypto-login')
+    //     .then(res => console.log(res))
+    // }, [])
 
     return(
         <StyledNav theme={theme}>

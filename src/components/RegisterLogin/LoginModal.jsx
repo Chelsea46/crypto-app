@@ -1,7 +1,10 @@
+import { UserContext } from "../../contexts/UserContext";
 import { StyledModal } from "../styled/CoinsPage/Modal.styled";
+import { useContext } from "react";
 
 export default function LoginModal({close}){
     
+    const{ handleLoginFormChange } = useContext(UserContext)
     return(
         <StyledModal>
         <div className="login-modal">
@@ -13,9 +16,9 @@ export default function LoginModal({close}){
             </div>
             <form action="submit" method="POST">
                 <label htmlFor="email">Email</label>
-                <input required type="email" name="email" id="email"></input>
+                <input required type="email" name="email" id="email" onChange={handleLoginFormChange}></input>
                 <label htmlFor="password"> Password </label>
-                <input required type="password" name="password" id="password"></input>
+                <input required type="password" name="password" id="password" onChange={handleLoginFormChange}></input>
                 <div className="button">
                     <button className="submit-btn"type="submit">Login</button>
                 </div>

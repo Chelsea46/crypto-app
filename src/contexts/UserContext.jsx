@@ -6,14 +6,14 @@ export const UserContext = createContext();
 function UserContextProvider(props) {
 
     const[loginUser, setLoginUser] = useState({
-        userEmail: '',
-        userPassword: ''
+        email: '',
+        password: ''
     });
 
     const[registerUser, setRegisterUser] = useState({
-        userName: '',
-        userEmail: '',
-        userPassword:'',
+        name: '',
+        email: '',
+        password:'',
     })
 
     function handleRegisterFormChange(e){
@@ -21,17 +21,17 @@ function UserContextProvider(props) {
         if(name === 'name'){
             setRegisterUser((prevFormData) => ({
                 ...prevFormData,
-                userName: value.charAt(0).toUpperCase() + value.slice(1)
+                name: value.charAt(0).toUpperCase() + value.slice(1)
             }))
         }else if(name === 'email'){
             setRegisterUser((prevFormData) => ({
                 ...prevFormData,
-                userEmail: value.charAt(0).toUpperCase() + value.slice(1)
+                email: value.charAt(0).toUpperCase() + value.slice(1)
             }))
         }else if(name === 'password'){
             setRegisterUser((prevFormData) => ({
                 ...prevFormData,
-                userPassword: value
+                password: value
             }))
         }
     }
@@ -41,25 +41,40 @@ function UserContextProvider(props) {
         if(name === 'email'){
             setLoginUser((prevFormData) => ({
                 ...prevFormData,
-                userEmail: value.charAt(0).toUpperCase() + value.slice(1)
+                email: value.charAt(0).toUpperCase() + value.slice(1)
             }))
         }else if(name === 'password'){
             setLoginUser((prevFormData) => ({
                 ...prevFormData,
-                userPassword: value
+                password: value
             }))
         }
     }
     
-    async function handleRegistrationSubmit(event) {
-        event.preventDefault()
+    const handleLoginSubmit = async (e) => {
+        e.preventDefault();
+        
+        try {
+          const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL_LOGIN}`, loginUser);
+          console.log(response.data); 
+        } catch (error) {
+          console.error('Error:', error);
+        }
+      };
 
-        const res = await axios.post(`${import.meta.env.VITE_BACKEND_URL}`, registerUser)
-        const addedUser = res.data
-    }
+    const handleRegistrationSubmit = async (e) => {
+        e.preventDefault();
+        
+        try {
+          const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL_REGISTER}`, registerUser);
+          console.log(response.data);
+        } catch (error) {
+          console.error('Error:', error);
+        }
+      };
         
 
-    const value = { handleRegisterFormChange, handleLoginFormChange, handleRegistrationSubmit };
+    const value = { handleRegisterFormChange, handleLoginFormChange, handleRegistrationSubmit, handleLoginSubmit };
 
     return (
         <UserContext.Provider value={value}>

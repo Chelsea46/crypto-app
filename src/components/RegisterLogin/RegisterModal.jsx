@@ -16,7 +16,7 @@ export default function RegisterModal({close}){
             <div className="title">
                 <h2>Sign Up</h2>
             </div>
-            <form action="submit" onSubmit={handleRegistrationSubmit} method="POST">
+            <form onSubmit={handleRegistrationSubmit} method="POST">
                 <label htmlFor="name">User name</label>
                 <input required type="text" id="name" name="name" onChange={ handleRegisterFormChange}/>
                 <label htmlFor="email">Email</label>

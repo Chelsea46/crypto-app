@@ -124,6 +124,10 @@ const StyledCoinData = styled.div `
             .right{
                 width: 98%;
             }
+
+            .market-price{
+                width: 75%;
+            }
         }
 
         @media (min-width: 481px) and (max-width: 768px){

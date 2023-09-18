@@ -70,6 +70,7 @@ function UserContextProvider(props) {
           console.log(response.data);
         } catch (error) {
           console.error('Error:', error);
+
         }
       };
         

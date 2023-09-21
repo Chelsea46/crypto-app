@@ -32,7 +32,7 @@ export const Container = styled.div `
 
     .reg-user-alert{
         text-align: center;
-        margin-top: 2em;
+        margin-top: 4em;
     }
 
     .btns{
@@ -53,7 +53,7 @@ export const Container = styled.div `
         color: white;
     }
     .login-btn, .signup-btn{
-            padding: .85em;
+            padding: .70em;
             border-radius: 8px;
             width: 10%;
             font-size: .90rem;
@@ -81,11 +81,20 @@ export const Container = styled.div `
         }
         .login-btn, .signup-btn{
             width: 25%;
+            font-size: .90rem;
+        }
+
+        .welcome, .reg-user-alert{
+            font-size: 1rem;
         }
     }
 
     @media (min-width: 481px) and (max-width: 768px){
         width: 90vw;
+
+        .welcome, .reg-user-alert{
+            font-size: 1rem;
+        }
 
         .overview, .summary, .stats{
             left: 20px;

@@ -174,6 +174,14 @@ export const StyledNav = styled.nav `
         .right-nav{
             width: 61%;
         }
+        .dropdown-user{
+            font-size: .90rem;
+        }
+
+        .dropdown-content.open{
+            width: 76px;
+            font-size: .65rem;
+        }
     }
 
     @media (min-width: 481px) and (max-width: 768px){
@@ -215,6 +223,14 @@ export const StyledNav = styled.nav `
 
         .right-nav{
             width: 50%;
+        }
+        .dropdown-user{
+            font-size: .90rem;
+        }
+
+        .dropdown-content.open{
+            width: 76px;
+            font-size: .65rem;
         }
       }
 

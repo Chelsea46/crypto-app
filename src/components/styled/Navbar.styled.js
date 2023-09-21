@@ -31,6 +31,7 @@ export const StyledNav = styled.nav `
 
     .right-nav{
         display: flex;
+        justify-content: space-between;
         width: 45%;
         align-items:center
     }

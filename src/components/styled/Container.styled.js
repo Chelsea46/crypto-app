@@ -79,6 +79,9 @@ export const Container = styled.div `
             flex-direction: column;
             align-items: center;
         }
+        .login-btn, .signup-btn{
+            width: 25%;
+        }
     }
 
     @media (min-width: 481px) and (max-width: 768px){
@@ -95,5 +98,9 @@ export const Container = styled.div `
             flex-direction: column;
             align-items: center;
         }
+        .login-btn, .signup-btn{
+            width: 25%;
+        }
+
       }
 `

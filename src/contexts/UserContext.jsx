@@ -144,16 +144,17 @@ function UserContextProvider(props) {
                 'Content-Type': 'application/json'
             }
         }).then(response =>{
-            console.log(response)
-            navigate('/')
-            toggleDropdown()
+            console.log(response);
+            navigate('/');
+            toggleDropdown();
+            setIsLoggedIn
         })
       }
       
       function deleteUser(){
-        console.log('user removed')
         axios.delete(`http://localhost:5000/auth/delete/${userDetails.id}`)
         toggleDropdown()
+        setIsLoggedIn(false);
       }
 
     const value = { 

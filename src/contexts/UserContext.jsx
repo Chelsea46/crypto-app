@@ -147,7 +147,7 @@ function UserContextProvider(props) {
             console.log(response);
             navigate('/');
             toggleDropdown();
-            setIsLoggedIn
+            setIsLoggedIn(false);
         })
       }
       

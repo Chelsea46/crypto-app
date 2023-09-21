@@ -30,7 +30,6 @@ export const StyledNav = styled.nav `
     }
 
     .right-nav{
-        position: relative;
         display: flex;
         width: 45%;
         align-items:center
@@ -82,15 +81,55 @@ export const StyledNav = styled.nav `
     }
 
     .login-register{
-        display: flex;
-        justify-content: space-between;
-        width: 145px;
-        margin-left: 1em;
+        position: relative;
+        display: inline-block;
+        // display: flex;
+        // align-items: center;
     }
 
     .login:hover, .register:hover{
         color: #6C7575;
         cursor: pointer;
+    }
+
+    .login, .register, .logout, .delete-user{
+        list-style: none;
+        padding: .5em;
+        cursor: pointer;
+    }
+
+    #login-dropdown{
+        padding: 0em;
+    }
+
+
+    .dropdown-user{
+        color: rgb(0, 255, 95);
+        font-size: 1.5rem;
+        margin-left: .80em;
+        cursor: pointer;
+    }
+
+  
+    .dropdown-content {
+        display: none;
+        position: absolute;
+    }
+
+    .dropdown-content.open {
+        display: block;
+        padding-top: 1em;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        border-radius: 8px;
+        z-index: 1;
+        width: 105px;
+        color: ${(props) => props.theme.body.color};
+        background:  ${(props) => props.theme.active_coin_portfolio.background};
+        font-size: .95rem;
+    }
+
+    .space-right-nav{
+        display:flex;
     }
 
     @media (max-width: 480px){

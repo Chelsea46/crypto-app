@@ -2,9 +2,9 @@ import { UserContext } from "../../contexts/UserContext";
 import { StyledModal } from "../styled/CoinsPage/Modal.styled";
 import { useContext } from "react";
 
-export default function LoginModal({close}){
+export default function LoginModal(){
     
-    const{ handleLoginFormChange, handleLoginSubmit } = useContext(UserContext)
+    const{ handleLoginFormChange, handleLoginSubmit, close } = useContext(UserContext)
     return(
         <StyledModal>
         <div className="login-modal">

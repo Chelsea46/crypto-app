@@ -1,28 +1,47 @@
 import { StyledNav } from "./styled/Navbar.styled";
-import { FaCircleHalfStroke } from  "react-icons/fa6";
+import { FaCircleHalfStroke, FaUser} from  "react-icons/fa6";
 import { CryptoContext } from '../contexts/CyrptoContext';
-import { useContext, useEffect } from "react";
+import { UserContext } from "../contexts/UserContext";
+import { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from 'axios';
 
 
-export default function Navbar({onClick, theme, regModalClosed, loginModalClosed}){
-    const { currencies, currencySelected, symbol, handleSearch, optionsCountry, searchInput, clearSearch } = useContext(CryptoContext);
+export default function Navbar({onClick, theme}){
 
-    // reg modal open close function
-    function addRegModal(){
-        regModalClosed(false);
-    }
+    const { currencies, 
+        currencySelected, 
+        symbol, handleSearch, 
+        optionsCountry, 
+        searchInput, 
+        clearSearch,
+    } = useContext(CryptoContext);
 
-    // loging modal open close function
-    function addLoginModal(){
-        loginModalClosed(false);
-    }
+    const { 
+        addRegModal,
+        addLoginModal,
+        isLoggedIn,
+        logOut,
+        deleteUser,
+        cookieToken,
+        isDropdownOpen,
+        toggleDropdown
+     } = useContext(UserContext);
 
-    // useEffect(() => {
-    //     axios.get('http://localhost/crypto-login')
-    //     .then(res => console.log(res))
-    // }, [])
+    
+
+    useEffect(() => {
+        if(!isLoggedIn && !cookieToken){
+            console.log('User needs to log in')
+           
+        }else{
+           console.log('logged in')
+        }
+
+      }, [cookieToken, isLoggedIn]);
+
+
+   
 
     return(
         <StyledNav theme={theme}>
@@ -50,9 +69,23 @@ export default function Navbar({onClick, theme, regModalClosed, loginModalClosed
                         </select>
                     </div>
                     <div className="login-register">
-                        <p className="login" onClick={addLoginModal}>Login</p> 
-                        <p className="register" onClick={addRegModal}>Sign up</p>
-                    </div>
+                        <div className="dropdown-btn" onClick={toggleDropdown}>
+                            <FaUser className="dropdown-user"/>
+                        </div>
+                        <div className={`dropdown-content ${isDropdownOpen ? 'open' : ''}`}>
+                            {isLoggedIn ? (
+                                <ul id="login-dropdown">
+                                    <li className="logout" onClick={logOut}>Logout</li>
+                                    <li className="delete-user" onClick={deleteUser}> Delete Me</li>
+                                </ul>
+                            ) : (
+                                <ul id="login-dropdown">
+                                    <li className="login" onClick={addLoginModal}>Login</li>
+                                    <li className="register" onClick={addRegModal}>Sign Up</li>
+                                </ul>
+                            )}
+                            </div>
+                        </div>
                 <div className="toggle-mode" onClick={onClick}><FaCircleHalfStroke className="toggle"/></div>
             </div>
         </StyledNav>

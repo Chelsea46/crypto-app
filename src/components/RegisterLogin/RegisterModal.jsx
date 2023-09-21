@@ -2,9 +2,9 @@ import { useContext, useState } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { StyledModal } from "../styled/CoinsPage/Modal.styled";
 
-export default function RegisterModal({close}){
+export default function RegisterModal(){
 
-    const{ handleRegisterFormChange, handleRegistrationSubmit} = useContext(UserContext)
+    const{ handleRegisterFormChange, handleRegistrationSubmit, close} = useContext(UserContext)
 
     
     return(

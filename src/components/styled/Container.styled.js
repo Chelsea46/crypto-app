@@ -29,6 +29,41 @@ export const Container = styled.div `
         left: 117px;
         top: 0px;
     }
+
+    .reg-user-alert{
+        text-align: center;
+        margin-top: 2em;
+    }
+
+    .btns{
+        display: flex;
+        justify-content: center;
+        padding-bottom: 3em;
+        padding-top: 3em;
+    }
+
+    .welcome{
+        text-align: center;
+        padding-top: 1em;
+        padding-bottom: 1em;
+    }
+
+    .login-btn{
+        background-color: rgb(6, 213, 84);
+        color: white;
+    }
+    .login-btn, .signup-btn{
+            padding: .85em;
+            border-radius: 8px;
+            width: 10%;
+            font-size: .90rem;
+    }
+
+    .signup-btn{
+        background-color: white;
+        color: rgb(6, 213, 84);
+        margin-left: 2em;
+    }
    
     @media (max-width: 480px){
         width: 90vw;

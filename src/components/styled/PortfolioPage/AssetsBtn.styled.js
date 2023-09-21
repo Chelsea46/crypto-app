@@ -5,7 +5,7 @@ const AssetsButtonStyled = styled.div `
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 200px;
+    margin-bottom: 3em;
 
     button{
         background: rgb(6, 213, 84);

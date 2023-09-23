@@ -123,11 +123,20 @@ function UserContextProvider(props) {
         e.preventDefault();
         
         try {
-          const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL_REGISTER}`, registerUser);
+          const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL_REGISTER}`, registerUser,
+          {
+            withCredentials: true,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+          });
+          setIsLoggedIn(response.data.success);
+          setCookieToken(response.data.token);
+          setUserDetails(response.data.user);
           console.log(response.data);
-          if(response){
-              close()
-              toggleDropdown()
+          if(response.data.success){
+              close();
+              toggleDropdown();
           }
         } catch (error) {
           console.error('Error:', error);
@@ -152,7 +161,7 @@ function UserContextProvider(props) {
       }
       
       function deleteUser(){
-        axios.delete(`http://localhost:5000/auth/delete/${userDetails.id}`)
+        axios.delete(`${import.meta.env.VITE_BACKEND_URL_DELETE}/${userDetails.id}`)
         toggleDropdown()
         setIsLoggedIn(false);
       }

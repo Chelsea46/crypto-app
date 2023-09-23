@@ -161,7 +161,9 @@ function UserContextProvider(props) {
       }
       
       function deleteUser(){
-        axios.delete(`${import.meta.env.VITE_BACKEND_URL_DELETE}/${userDetails.id}`)
+        // axios.delete(`${import.meta.env.VITE_BACKEND_URL_DELETE}/${userDetails.id}`)
+        const url = `${import.meta.env.VITE_BACKEND_URL_DELETE}`.replace(":id", userDetails.id);
+        axios.delete(url);
         toggleDropdown()
         setIsLoggedIn(false);
       }

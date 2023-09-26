@@ -37,8 +37,8 @@ const StyledAssetsModal = styled.div `
     }
 
     .left{
-        font-size: .80em;
-        width: 200px;
+        font-size: .80em; 
+        width: 227px;
         border-radius: 10px;
         background-color: ${(props) => props.theme.body.background};
         margin-right: 1em;

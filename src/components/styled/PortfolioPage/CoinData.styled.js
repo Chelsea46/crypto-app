@@ -120,6 +120,7 @@ const StyledCoinData = styled.div `
                 flex-direction: column;
                 line-height: 1.6em;
                 width: auto;
+                align-items: flex-start;
             }
 
             .right{
@@ -160,6 +161,7 @@ const StyledCoinData = styled.div `
                 flex-direction: column;
                 line-height: 1.6em;
                 width: auto;
+                align-items: flex-start;
             }
 
             .right{

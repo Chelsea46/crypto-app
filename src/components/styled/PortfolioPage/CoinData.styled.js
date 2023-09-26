@@ -101,9 +101,6 @@ const StyledCoinData = styled.div `
 
             .left{
                 width: 50%;
-                width: 98%;
-                display: flex;
-                justify-content: center;
             }
 
             .left >img{
@@ -127,6 +124,8 @@ const StyledCoinData = styled.div `
 
             .right{
                 width: 98%;
+                display: flex;
+                justify-content: center;
             }
 
             .market-price{
@@ -142,8 +141,6 @@ const StyledCoinData = styled.div `
 
             .left{
                 width: 50%;
-                display: flex;
-                justify-content: center;
             }
 
             .left >img{
@@ -167,6 +164,8 @@ const StyledCoinData = styled.div `
 
             .right{
                 width: 98%;
+                display: flex;
+                justify-content: center;
             }
         }
 
